@@ -254,7 +254,7 @@ class MLPClassifierWrapper:
         if not path.exists():
             raise FileNotFoundError(f"Model file not found: '{file_path}'")
 
-        data = torch.load(path, map_location=device or "cpu")
+        data = torch.load(path, map_location=device or "cpu", weights_only=False)
         cfg = data["config"]
         wrapper = cls(
             input_dim=cfg["input_dim"],

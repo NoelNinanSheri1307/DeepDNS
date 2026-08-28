@@ -1,0 +1,16 @@
+{
+  "train_captures_count": 12,
+  "val_captures_count": 3,
+  "test_captures_count": 3,
+  "cross_split_capture_overlap": {
+    "train_val": [],
+    "train_test": [],
+    "val_test": []
+  },
+  "test_sequence_windows_count": 13084,
+  "test_boundary_violations": 0,
+  "consecutive_window_overlap_ratio": 0.6667,
+  "label_inconsistencies": 0,
+  "scaler_fitted_on_split": "train",
+  "scaler_n_samples_seen": 0
+}

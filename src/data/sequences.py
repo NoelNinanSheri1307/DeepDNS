@@ -84,11 +84,23 @@ class StreamingSequenceDataset(Dataset):
             "start_idx": win.start_idx,
             "end_idx": win.end_idx,
             "seq_len": actual_len,
-            "attack_modality": win.attack_modality,
+            "attack_modality": win.attack_modality or "none",
             "intensity": win.intensity,
         }
 
         return padded_seq, actual_len, label_tensor, meta
+
+
+def sequence_collate_fn(batch: list) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor, list]:
+    """
+    Custom collate function for StreamingSequenceDataset batches.
+    Prevents PyTorch default_collate errors on string/None metadata.
+    """
+    seqs = torch.stack([item[0] for item in batch], dim=0)
+    lens = torch.tensor([item[1] for item in batch], dtype=torch.long)
+    labels = torch.stack([item[2] for item in batch], dim=0)
+    metas = [item[3] for item in batch]
+    return seqs, lens, labels, metas
 
 
 class SequenceBuilder:
