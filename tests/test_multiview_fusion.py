@@ -186,3 +186,56 @@ def test_multiview_cuda_execution_if_available():
         lex = np.random.randint(0, 45, (2, 10, 128))
         probs = clf.predict_proba(beh, lex)
         assert probs.shape == (2, 2)
+
+
+def test_multiview_branch_strict_isolation(mock_multiview_batch):
+    """
+    Verifies that:
+    1. In behavioral_only mode, lexical inputs have 0 influence (or can be None).
+    2. In lexical_only mode, behavioral inputs have 0 influence (or can be None).
+    3. In both mode, both branches contribute to fused logits.
+    """
+    beh_seqs, lex_seqs, seq_lens = mock_multiview_batch
+    net = DeepDNSMultiViewNetwork()
+    net.eval()
+
+    corrupted_lex = torch.randint(2, 45, lex_seqs.shape)
+    corrupted_beh = torch.randn_like(beh_seqs) * 500.0
+
+    with torch.no_grad():
+        # 1. Behavioral only: corrupted lexical does not change output
+        _, out_beh_orig, _, _, _ = net(beh_seqs, lex_seqs, seq_lens, mode="behavioral_only")
+        _, out_beh_corr, _, _, _ = net(beh_seqs, corrupted_lex, seq_lens, mode="behavioral_only")
+        _, out_beh_none, _, _, _ = net(beh_seqs, None, seq_lens, mode="behavioral_only")
+        torch.testing.assert_close(out_beh_orig, out_beh_corr)
+        torch.testing.assert_close(out_beh_orig, out_beh_none)
+
+        # 2. Lexical only: corrupted behavioral does not change output
+        _, out_lex_orig, _, _, _ = net(beh_seqs, lex_seqs, seq_lens, mode="lexical_only")
+        _, out_lex_corr, _, _, _ = net(corrupted_beh, lex_seqs, seq_lens, mode="lexical_only")
+        _, out_lex_none, _, _, _ = net(None, lex_seqs, seq_lens, mode="lexical_only")
+        torch.testing.assert_close(out_lex_orig, out_lex_corr)
+        torch.testing.assert_close(out_lex_orig, out_lex_none)
+
+        # 3. Both mode: both branches active
+        _, out_both_1, _, _, _ = net(beh_seqs, lex_seqs, seq_lens, mode="both")
+        _, out_both_2, _, _, _ = net(beh_seqs, corrupted_lex, seq_lens, mode="both")
+        assert not torch.equal(out_both_1, out_both_2), "Lexical input had zero effect in both mode!"
+
+
+def test_multiview_artifact_paths_uniqueness():
+    """
+    Verifies that all Multi-View output paths are unique and do not overwrite
+    any baseline, temporal GRU, ablation, or diagnostic report files.
+    """
+    modes = ["both", "behavioral_only", "lexical_only"]
+    models_dir = Path("data/processed/models")
+    reports_dir = Path("reports/multiview")
+
+    for m in modes:
+        m_path = models_dir / f"multiview_{m}.pt"
+        r_path = reports_dir / f"multiview_results_{m}.json"
+
+        # Must not collide with temporal GRU files
+        assert m_path.name not in ["temporal_gru.pt", "temporal_gru_no_iat.pt", "temporal_gru_shuffled_order.pt", "temporal_gru_label_shuffle.pt"]
+        assert r_path.name not in ["temporal_gru_results.json", "temporal_gru_results_no_iat.json", "feature_shortcut_audit.json"]

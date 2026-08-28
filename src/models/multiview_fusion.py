@@ -84,33 +84,40 @@ class MultiViewFusionHead(nn.Module):
 
     def forward(
         self,
-        z_beh: torch.Tensor,
-        z_lex: torch.Tensor,
+        z_beh: Optional[torch.Tensor],
+        z_lex: Optional[torch.Tensor],
         mode: str = "both",
     ) -> Tuple[torch.Tensor, torch.Tensor]:
         """
         Computes fused representation and logits.
 
         Args:
-            z_beh: Tensor of shape (..., beh_dim).
-            z_lex: Tensor of shape (..., lex_dim).
+            z_beh: Tensor of shape (..., beh_dim) or None if lexical_only.
+            z_lex: Tensor of shape (..., lex_dim) or None if behavioral_only.
             mode: 'both', 'behavioral_only', or 'lexical_only'.
 
         Returns:
             logits: Tensor of shape (..., num_classes).
-            z_fuse: Fused representation of shape (..., fuse_dim).
+            z_fuse: Fused or single-branch representation of shape (..., fuse_dim).
         """
-        p_beh = self.beh_proj(z_beh)
-        p_lex = self.lex_proj(z_lex)
-
         if mode == "behavioral_only":
+            if z_beh is None:
+                raise ValueError("z_beh must not be None when mode='behavioral_only'")
+            p_beh = self.beh_proj(z_beh)
             logits = self.beh_only_head(p_beh)
             return logits, p_beh
         elif mode == "lexical_only":
+            if z_lex is None:
+                raise ValueError("z_lex must not be None when mode='lexical_only'")
+            p_lex = self.lex_proj(z_lex)
             logits = self.lex_only_head(p_lex)
             return logits, p_lex
 
         # Default: Full Dual-View Fusion
+        if z_beh is None or z_lex is None:
+            raise ValueError("Both z_beh and z_lex must be provided when mode='both'")
+        p_beh = self.beh_proj(z_beh)
+        p_lex = self.lex_proj(z_lex)
         concat_views = torch.cat([p_beh, p_lex], dim=-1)
         z_fuse = self.fusion_mlp(concat_views)
         logits = self.classifier(z_fuse)
@@ -178,41 +185,48 @@ class DeepDNSMultiViewNetwork(nn.Module):
 
     def forward(
         self,
-        beh_seqs: torch.Tensor,
-        lex_seqs: torch.Tensor,
+        beh_seqs: Optional[torch.Tensor],
+        lex_seqs: Optional[torch.Tensor],
         seq_lens: Optional[torch.Tensor] = None,
         mode: str = "both",
-    ) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
+    ) -> Tuple[torch.Tensor, torch.Tensor, Optional[torch.Tensor], Optional[torch.Tensor], torch.Tensor]:
         """
-        Forward pass through both views and the fusion head.
+        Forward pass through both views (or strictly one view in ablation mode) and the fusion head.
 
         Args:
-            beh_seqs: Tensor of shape (B, K, 12).
-            lex_seqs: Integer tensor of shape (B, K, L) with character tokens.
+            beh_seqs: Tensor of shape (B, K, 12) or None if lexical_only.
+            lex_seqs: Integer tensor of shape (B, K, L) with character tokens or None if behavioral_only.
             seq_lens: Optional tensor of shape (B,) with valid sequence lengths.
             mode: 'both', 'behavioral_only', or 'lexical_only'.
 
         Returns:
             step_logits: Tensor of shape (B, K, num_classes).
             final_logits: Tensor of shape (B, num_classes) at valid horizon length.
-            z_beh_all: Behavioral embeddings across time (B, K, 64).
-            z_lex_all: Lexical embeddings across time (B, K, 128).
-            z_fuse_all: Fused representations across time (B, K, 64).
+            z_beh_all: Behavioral embeddings across time (B, K, 64) or None.
+            z_lex_all: Lexical embeddings across time (B, K, 128) or None.
+            z_fuse_all: Fused or single-branch representations across time (B, K, 64).
         """
-        # 1. Behavioral GRU Forward Pass -> (B, K, 64)
-        _, _, z_beh_all = self.temporal_gru(beh_seqs, seq_lens)
+        if mode == "behavioral_only":
+            _, _, z_beh_all = self.temporal_gru(beh_seqs, seq_lens)
+            z_lex_all = None
+            step_logits, z_fuse_all = self.fusion_head(z_beh_all, None, mode=mode)
+            ref_seq = beh_seqs
+        elif mode == "lexical_only":
+            z_beh_all = None
+            z_lex_all = self.char_cnn.extract_embedding(lex_seqs)
+            step_logits, z_fuse_all = self.fusion_head(None, z_lex_all, mode=mode)
+            ref_seq = lex_seqs
+        else:
+            _, _, z_beh_all = self.temporal_gru(beh_seqs, seq_lens)
+            z_lex_all = self.char_cnn.extract_embedding(lex_seqs)
+            step_logits, z_fuse_all = self.fusion_head(z_beh_all, z_lex_all, mode=mode)
+            ref_seq = beh_seqs
 
-        # 2. Lexical Char-CNN Forward Pass -> (B, K, 128)
-        z_lex_all = self.char_cnn.extract_embedding(lex_seqs)
-
-        # 3. Fuse views at each observation step t in [1..K]
-        step_logits, z_fuse_all = self.fusion_head(z_beh_all, z_lex_all, mode=mode)
-
-        # 4. Extract final prediction at actual sequence length
+        # Extract final prediction at actual sequence length
         if seq_lens is not None:
-            batch_size = beh_seqs.size(0)
-            seq_lens_clamped = torch.clamp(seq_lens.long(), min=1, max=beh_seqs.size(1))
-            batch_indices = torch.arange(batch_size, device=beh_seqs.device)
+            batch_size = ref_seq.size(0)
+            seq_lens_clamped = torch.clamp(seq_lens.long(), min=1, max=ref_seq.size(1))
+            batch_indices = torch.arange(batch_size, device=ref_seq.device)
             final_logits = step_logits[batch_indices, seq_lens_clamped - 1]
         else:
             final_logits = step_logits[:, -1, :]
