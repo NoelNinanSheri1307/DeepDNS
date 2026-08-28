@@ -1,7 +1,15 @@
 """
-DeepDNS Adaptive Inference and Sequential Evidence Control Package.
+DeepDNS Canonical Inference and Sequential Evidence Control Package.
 """
 
+from src.inference.types import (
+    DNSObservation,
+    DNSStream,
+    DetectionResult,
+    DecisionEnum,
+    InferenceMode,
+)
+from src.inference.engine import DeepDNSInferenceEngine
 from src.inference.adaptive_controller import (
     AdaptiveEvidenceController,
     AdaptiveDecision,
@@ -10,6 +18,12 @@ from src.inference.adaptive_controller import (
 from src.inference.cusum import SequentialCUSUMDetector
 
 __all__ = [
+    "DeepDNSInferenceEngine",
+    "DNSObservation",
+    "DNSStream",
+    "DetectionResult",
+    "DecisionEnum",
+    "InferenceMode",
     "AdaptiveEvidenceController",
     "AdaptiveDecision",
     "AdaptiveEvaluationResult",
