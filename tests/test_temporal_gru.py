@@ -4,6 +4,7 @@ Unit tests for DeepDNS Temporal GRU architecture and causal temporal modeling.
 
 import pytest
 import numpy as np
+import pandas as pd
 import torch
 from pathlib import Path
 
@@ -247,4 +248,216 @@ def test_feature_scaler_isolated_to_training():
         assert data.get("is_fitted") is True
         assert len(data.get("mean")) == 12
         assert len(data.get("scale")) == 12
+
+
+def test_iat_ablation_feature_dimension_and_exclusion():
+    """
+    Verifies that when IAT is ablated, the extractor returns exactly 11 causal features
+    without inter_arrival_time, and rejects forbidden columns.
+    """
+    from src.data.features import CausalFeatureExtractor
+    from src.data.schema import FORBIDDEN_MODEL_COLUMNS
+
+    extractor = CausalFeatureExtractor(exclude_features=["inter_arrival_time"])
+    assert len(extractor.feature_names) == 11
+    assert "inter_arrival_time" not in extractor.feature_names
+
+    # Mock raw stateless dataframe
+    mock_df = pd.DataFrame({
+        "timestamp": ["2026-08-28 10:00:00", "2026-08-28 10:00:01"],
+        "FQDN_count": [25, 30],
+        "subdomain_length": [10, 15],
+        "entropy": [3.2, 3.5],
+        "numeric": [5, 8],
+        "upper": [0, 0],
+        "special": [1, 2],
+        "labels": [3, 4],
+        "labels_max": [10, 12],
+        "labels_average": [6.0, 7.0],
+        "subdomain": [1, 1],
+        "len": [64, 80],
+    })
+
+    feat_df = extractor.extract_from_dataframe(mock_df)
+    assert feat_df.shape == (2, 11)
+    assert "inter_arrival_time" not in feat_df.columns
+    for forbidden in FORBIDDEN_MODEL_COLUMNS:
+        assert forbidden not in feat_df.columns
+
+
+def test_iat_ablated_scaler_and_causality():
+    """
+    Verifies that an 11-dimensional ablated tensor can be scaled, processed by Temporal GRU,
+    and maintains strict forward causality.
+    """
+    from src.data.features import FeatureScaler
+
+    feature_names_11 = [
+        "fqdn_length", "subdomain_length", "char_entropy", "digit_ratio",
+        "uppercase_ratio", "special_ratio", "label_count", "max_label_length",
+        "avg_label_length", "has_subdomain", "payload_len"
+    ]
+    scaler = FeatureScaler(feature_names=feature_names_11)
+    mock_data = np.random.randn(20, 11)
+    scaler.fit(mock_data)
+    assert scaler.is_fitted
+    assert len(scaler.mean_) == 11
+
+    net_11 = TemporalGRUNetwork(input_dim=11, hidden_dim=32, num_classes=2)
+    net_11.eval()
+
+    seq_len = 15
+    prefix_len = 8
+    x1 = torch.randn(2, seq_len, 11)
+    x2 = x1.clone()
+    x2[:, prefix_len:, :] = torch.randn(2, seq_len - prefix_len, 11) * 300.0
+
+    with torch.no_grad():
+        step_logits_1, _, _ = net_11(x1)
+        step_logits_2, _, _ = net_11(x2)
+
+    torch.testing.assert_close(
+        step_logits_1[:, :prefix_len, :],
+        step_logits_2[:, :prefix_len, :],
+        rtol=1e-6,
+        atol=1e-6,
+    )
+
+
+def test_temporal_order_permutation_multiset_preservation():
+    """
+    Verifies that temporal order permutation within individual sequence windows:
+    1. Preserves the exact multiset of 11-dimensional feature vectors.
+    2. Modifies only the temporal sequence order.
+    3. Operates independently and deterministically across windows.
+    4. Leaves sequence lengths, labels, and padding bounds intact.
+    """
+    from src.data.sequences import SequenceBuilder, StreamingSequenceDataset
+    from src.data.labels import CaptureMetadata
+
+    np.random.seed(42)
+    # Generate distinguishable feature vectors (row i has first feature = i)
+    total_rows = 40
+    mock_features = np.zeros((total_rows, 11), dtype=np.float32)
+    for i in range(total_rows):
+        mock_features[i, :] = float(i + 1)
+
+    meta = CaptureMetadata(
+        label=1, label_name="attack", attack_modality="audio", intensity="heavy",
+        capture_id="cap1", source_file="cap1.csv"
+    )
+    builder = SequenceBuilder(min_seq_len=5, max_seq_len=15, step_size=5)
+    windows = builder.build_prefix_windows(total_rows=total_rows, meta=meta)
+
+    ds_control = StreamingSequenceDataset(mock_features, windows, max_seq_len=15, shuffle_order=False)
+    ds_shuffled = StreamingSequenceDataset(mock_features, windows, max_seq_len=15, shuffle_order=True, seed=42)
+
+    assert len(ds_control) == len(ds_shuffled)
+
+    for idx in range(len(ds_control)):
+        seq_c, len_c, label_c, meta_c = ds_control[idx]
+        seq_s, len_s, label_s, meta_s = ds_shuffled[idx]
+
+        # Labels, lengths, and metadata must match 100%
+        assert len_c == len_s
+        assert label_c == label_s
+        assert meta_c["capture_id"] == meta_s["capture_id"]
+
+        # Valid non-padded slice
+        valid_c = seq_c[:len_c].numpy()
+        valid_s = seq_s[:len_s].numpy()
+
+        # The multiset of rows must be identical
+        sorted_c = np.sort(valid_c, axis=0)
+        sorted_s = np.sort(valid_s, axis=0)
+        np.testing.assert_array_equal(sorted_c, sorted_s)
+
+        # But for windows with length >= 5, the temporal order must be permuted
+        if len_c >= 5:
+            assert not np.array_equal(valid_c, valid_s), f"Window {idx} order was not permuted!"
+
+        # Zero padding must be untouched
+        if len_c < 15:
+            assert torch.all(seq_c[len_c:] == 0.0)
+            assert torch.all(seq_s[len_s:] == 0.0)
+
+    # Test determinism: fetching same idx produces identical permutation
+    seq_s1, _, _, _ = ds_shuffled[0]
+    seq_s2, _, _, _ = ds_shuffled[0]
+    torch.testing.assert_close(seq_s1, seq_s2)
+
+
+def test_training_label_permutation_sanity_check():
+    """
+    Verifies the negative-control training label permutation:
+    1. Training labels are actively permuted across windows while preserving class balance.
+    2. Input features X, sequence lengths k, and window indices are 100% untouched.
+    3. Validation and test sets have labels 100% untouched.
+    4. Permutation is strictly deterministic given label_seed.
+    """
+    from src.data.sequences import SequenceBuilder, StreamingSequenceDataset
+    from src.data.labels import CaptureMetadata
+
+    total_rows = 100
+    mock_features = np.random.randn(total_rows, 11).astype(np.float32)
+
+    meta_0 = CaptureMetadata(
+        label=0, label_name="benign", attack_modality=None, intensity="benign",
+        capture_id="benign_cap", source_file="benign.csv"
+    )
+    meta_1 = CaptureMetadata(
+        label=1, label_name="attack", attack_modality="audio", intensity="heavy",
+        capture_id="attack_cap", source_file="attack.csv"
+    )
+
+    builder = SequenceBuilder(min_seq_len=5, max_seq_len=10, step_size=2)
+    windows_0 = builder.build_prefix_windows(total_rows=50, meta=meta_0, offset=0)
+    windows_1 = builder.build_prefix_windows(total_rows=50, meta=meta_1, offset=50)
+    all_windows = windows_0 + windows_1  # 50% benign, 50% attack
+
+    # 1. Training dataset with permuted labels
+    ds_train_shuffled = StreamingSequenceDataset(
+        mock_features, all_windows, max_seq_len=10, shuffle_labels=True, label_seed=42
+    )
+    ds_train_control = StreamingSequenceDataset(
+        mock_features, all_windows, max_seq_len=10, shuffle_labels=False
+    )
+
+    orig_labels = []
+    shuffled_labels = []
+    for idx in range(len(all_windows)):
+        seq_c, len_c, label_c, meta_c = ds_train_control[idx]
+        seq_s, len_s, label_s, meta_s = ds_train_shuffled[idx]
+
+        # Features X and lengths must be completely identical
+        torch.testing.assert_close(seq_c, seq_s)
+        assert len_c == len_s
+        assert meta_c["start_idx"] == meta_s["start_idx"]
+        assert meta_c["end_idx"] == meta_s["end_idx"]
+
+        orig_labels.append(int(label_c.item()))
+        shuffled_labels.append(int(label_s.item()))
+
+    # Permuted labels must differ from original order
+    assert orig_labels != shuffled_labels, "Training labels were not permuted!"
+    # But exact class balance (sum of 1s) must be identical
+    assert sum(orig_labels) == sum(shuffled_labels)
+
+    # 2. Validation / Test datasets with labels untouched
+    ds_val = StreamingSequenceDataset(
+        mock_features, all_windows, max_seq_len=10, shuffle_labels=False
+    )
+    for idx in range(len(all_windows)):
+        _, _, label_v, _ = ds_val[idx]
+        assert int(label_v.item()) == all_windows[idx].label
+
+    # 3. Determinism check
+    ds_train_shuffled_2 = StreamingSequenceDataset(
+        mock_features, all_windows, max_seq_len=10, shuffle_labels=True, label_seed=42
+    )
+    for idx in range(len(all_windows)):
+        assert ds_train_shuffled[idx][2].item() == ds_train_shuffled_2[idx][2].item()
+
+
+
 

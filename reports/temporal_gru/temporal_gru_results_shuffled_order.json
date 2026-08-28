@@ -1,0 +1,122 @@
+{
+  "K_5": {
+    "model_name": "Temporal_GRU_K5",
+    "dataset_split": "test",
+    "total_samples": 13084,
+    "accuracy": 0.886044,
+    "precision": 0.952572,
+    "recall": 0.678886,
+    "specificity": 0.984014,
+    "f1": 0.792773,
+    "fpr": 0.015986,
+    "fnr": 0.321114,
+    "roc_auc": 0.987419,
+    "pr_auc": 0.946052,
+    "confusion_matrix": {
+      "tp": 2852,
+      "fp": 142,
+      "tn": 8741,
+      "fn": 1349
+    }
+  },
+  "K_10": {
+    "model_name": "Temporal_GRU_K10",
+    "dataset_split": "test",
+    "total_samples": 13084,
+    "accuracy": 0.988001,
+    "precision": 0.991254,
+    "recall": 0.971197,
+    "specificity": 0.995947,
+    "f1": 0.981123,
+    "fpr": 0.004053,
+    "fnr": 0.028803,
+    "roc_auc": 0.997627,
+    "pr_auc": 0.988929,
+    "confusion_matrix": {
+      "tp": 4080,
+      "fp": 36,
+      "tn": 8847,
+      "fn": 121
+    }
+  },
+  "K_15": {
+    "model_name": "Temporal_GRU_K15",
+    "dataset_split": "test",
+    "total_samples": 13084,
+    "accuracy": 0.994268,
+    "precision": 0.99425,
+    "recall": 0.98786,
+    "specificity": 0.997298,
+    "f1": 0.991045,
+    "fpr": 0.002702,
+    "fnr": 0.01214,
+    "roc_auc": 0.998868,
+    "pr_auc": 0.995494,
+    "confusion_matrix": {
+      "tp": 4150,
+      "fp": 24,
+      "tn": 8859,
+      "fn": 51
+    }
+  },
+  "K_20": {
+    "model_name": "Temporal_GRU_K20",
+    "dataset_split": "test",
+    "total_samples": 13084,
+    "accuracy": 0.995109,
+    "precision": 0.996162,
+    "recall": 0.988574,
+    "specificity": 0.998199,
+    "f1": 0.992354,
+    "fpr": 0.001801,
+    "fnr": 0.011426,
+    "roc_auc": 0.999471,
+    "pr_auc": 0.998192,
+    "confusion_matrix": {
+      "tp": 4153,
+      "fp": 16,
+      "tn": 8867,
+      "fn": 48
+    }
+  },
+  "K_25": {
+    "model_name": "Temporal_GRU_K25",
+    "dataset_split": "test",
+    "total_samples": 13084,
+    "accuracy": 0.995338,
+    "precision": 0.99688,
+    "recall": 0.988574,
+    "specificity": 0.998537,
+    "f1": 0.992709,
+    "fpr": 0.001463,
+    "fnr": 0.011426,
+    "roc_auc": 0.999675,
+    "pr_auc": 0.999002,
+    "confusion_matrix": {
+      "tp": 4153,
+      "fp": 13,
+      "tn": 8870,
+      "fn": 48
+    }
+  },
+  "K_30": {
+    "model_name": "Temporal_GRU_K30",
+    "dataset_split": "test",
+    "total_samples": 13084,
+    "accuracy": 0.995032,
+    "precision": 0.996638,
+    "recall": 0.98786,
+    "specificity": 0.998424,
+    "f1": 0.99223,
+    "fpr": 0.001576,
+    "fnr": 0.01214,
+    "roc_auc": 0.999753,
+    "pr_auc": 0.999283,
+    "confusion_matrix": {
+      "tp": 4150,
+      "fp": 14,
+      "tn": 8869,
+      "fn": 51
+    }
+  }
+}

@@ -12,6 +12,7 @@ data/interim/
 data/processed/*.joblib
 data/processed/*.pt
 data/processed/*.pth
+data/processed/*.csv
 data/processed/models/
 *.pcap
 *.pcapng
@@ -20,6 +21,11 @@ data/processed/models/
 *.zip
 *.7z
 *.rar
+*.npy
+*.npz
+*.parquet
+*.feather
+*.arrow
 
 # -----------------------------------------------------------------------------
 # 2. Large Model Weights, Checkpoints & Transformers Cache
@@ -36,6 +42,7 @@ data/processed/models/
 *.onnx
 *.ckpt
 *.tflite
+*.gguf
 checkpoints/
 saved_models/
 weights/

@@ -1,0 +1,122 @@
+{
+  "K_5": {
+    "model_name": "MultiView_BEHAVIORAL_ONLY_K5",
+    "dataset_split": "test",
+    "total_samples": 13084,
+    "accuracy": 0.956359,
+    "precision": 0.911565,
+    "recall": 0.956915,
+    "specificity": 0.956096,
+    "f1": 0.933689,
+    "fpr": 0.043904,
+    "fnr": 0.043085,
+    "roc_auc": 0.978102,
+    "pr_auc": 0.901896,
+    "confusion_matrix": {
+      "tp": 4020,
+      "fp": 390,
+      "tn": 8493,
+      "fn": 181
+    }
+  },
+  "K_10": {
+    "model_name": "MultiView_BEHAVIORAL_ONLY_K10",
+    "dataset_split": "test",
+    "total_samples": 13084,
+    "accuracy": 0.986548,
+    "precision": 0.974311,
+    "recall": 0.984051,
+    "specificity": 0.987729,
+    "f1": 0.979157,
+    "fpr": 0.012271,
+    "fnr": 0.015949,
+    "roc_auc": 0.994406,
+    "pr_auc": 0.976625,
+    "confusion_matrix": {
+      "tp": 4134,
+      "fp": 109,
+      "tn": 8774,
+      "fn": 67
+    }
+  },
+  "K_15": {
+    "model_name": "MultiView_BEHAVIORAL_ONLY_K15",
+    "dataset_split": "test",
+    "total_samples": 13084,
+    "accuracy": 0.993274,
+    "precision": 0.989993,
+    "recall": 0.98905,
+    "specificity": 0.995272,
+    "f1": 0.989521,
+    "fpr": 0.004728,
+    "fnr": 0.01095,
+    "roc_auc": 0.998041,
+    "pr_auc": 0.990835,
+    "confusion_matrix": {
+      "tp": 4155,
+      "fp": 42,
+      "tn": 8841,
+      "fn": 46
+    }
+  },
+  "K_20": {
+    "model_name": "MultiView_BEHAVIORAL_ONLY_K20",
+    "dataset_split": "test",
+    "total_samples": 13084,
+    "accuracy": 0.995032,
+    "precision": 0.994264,
+    "recall": 0.99024,
+    "specificity": 0.997298,
+    "f1": 0.992248,
+    "fpr": 0.002702,
+    "fnr": 0.00976,
+    "roc_auc": 0.999038,
+    "pr_auc": 0.996808,
+    "confusion_matrix": {
+      "tp": 4160,
+      "fp": 24,
+      "tn": 8859,
+      "fn": 41
+    }
+  },
+  "K_25": {
+    "model_name": "MultiView_BEHAVIORAL_ONLY_K25",
+    "dataset_split": "test",
+    "total_samples": 13084,
+    "accuracy": 0.995949,
+    "precision": 0.997124,
+    "recall": 0.99024,
+    "specificity": 0.998649,
+    "f1": 0.99367,
+    "fpr": 0.001351,
+    "fnr": 0.00976,
+    "roc_auc": 0.999267,
+    "pr_auc": 0.997006,
+    "confusion_matrix": {
+      "tp": 4160,
+      "fp": 12,
+      "tn": 8871,
+      "fn": 41
+    }
+  },
+  "K_30": {
+    "model_name": "MultiView_BEHAVIORAL_ONLY_K30",
+    "dataset_split": "test",
+    "total_samples": 13084,
+    "accuracy": 0.99572,
+    "precision": 0.997838,
+    "recall": 0.988812,
+    "specificity": 0.998987,
+    "f1": 0.993305,
+    "fpr": 0.001013,
+    "fnr": 0.011188,
+    "roc_auc": 0.999683,
+    "pr_auc": 0.999413,
+    "confusion_matrix": {
+      "tp": 4154,
+      "fp": 9,
+      "tn": 8874,
+      "fn": 47
+    }
+  }
+}

@@ -1,0 +1,59 @@
+================================================================================
+DEEPDNS FEATURE SHORTCUT & DATASET DIAGNOSTIC AUDIT REPORT
+================================================================================
+
+DIAGNOSTIC VERDICT: 1. NO OBVIOUS SHORTCUT
+EXPLANATION: No individual feature provides a deterministic label shortcut. Pointwise Logistic Regression (F1=0.7065, FPR=37.92%) and Decision Tree Depth 3 (F1=0.7077, FPR=38.38%) cannot match the Temporal GRU's multi-observation performance (FPR 0.13%, F1 0.9932 at K=30). The performance gain at K>=10 is driven genuinely by sequential evidence accumulation.
+
+--------------------------------------------------------------------------------
+SECTION A: FEATURE-LEVEL CLASS SEPARABILITY (11 CAUSAL FEATURES)
+--------------------------------------------------------------------------------
+Feature              | Cohen d  | Train AUC | Test AUC | Test F1  | Shortcut?
+---------------------------------------------------------------------------
+fqdn_length          | 1.2900   | 0.7798    | 0.7905   | 0.6935   | False    
+subdomain_length     | 1.2948   | 0.7732    | 0.7864   | 0.6947   | False    
+char_entropy         | -0.1386  | 0.5592    | 0.5750   | 0.5461   | False    
+digit_ratio          | 1.4034   | 0.7766    | 0.7903   | 0.6933   | False    
+uppercase_ratio      | 0.1591   | 0.5145    | 0.5139   | 0.4837   | False    
+special_ratio        | 1.0781   | 0.7635    | 0.7766   | 0.6898   | False    
+label_count          | 1.2909   | 0.7641    | 0.7777   | 0.6944   | False    
+max_label_length     | -0.1224  | 0.5679    | 0.5882   | 0.5891   | False    
+avg_label_length     | -0.1217  | 0.6898    | 0.7030   | 0.6371   | False    
+has_subdomain        | 1.0549   | 0.7029    | 0.7135   | 0.6196   | False    
+payload_len          | 0.3726   | 0.6228    | 0.6141   | 0.5762   | False    
+
+--------------------------------------------------------------------------------
+SECTION B: TRAIN / VAL / TEST DISTRIBUTION CONSISTENCY
+--------------------------------------------------------------------------------
+Feature              | Train Mean±Std         | Val Mean   | Test Mean  | Shift Alert
+--------------------------------------------------------------------------------
+fqdn_length          | 21.1521 ± 6.5340       | 22.1848    | 20.6652    | False     
+subdomain_length     | 5.4320 ± 4.0581        | 6.0235     | 5.0472     | False     
+char_entropy         | 2.4778 ± 0.4275        | 2.4796     | 2.4985     | False     
+digit_ratio          | 0.2264 ± 0.1800        | 0.2536     | 0.2074     | False     
+uppercase_ratio      | 0.0287 ± 0.1629        | 0.0323     | 0.0266     | False     
+special_ratio        | 0.1831 ± 0.0726        | 0.1918     | 0.1769     | False     
+label_count          | 4.4946 ± 1.8712        | 4.7784     | 4.3189     | False     
+max_label_length     | 8.1952 ± 4.2927        | 8.1896     | 8.3741     | False     
+avg_label_length     | 4.8204 ± 4.3022        | 4.7669     | 4.9242     | False     
+has_subdomain        | 0.6978 ± 0.4592        | 0.7516     | 0.6607     | False     
+payload_len          | 12.2257 ± 4.2241       | 12.4996    | 12.2193    | False     
+
+--------------------------------------------------------------------------------
+SECTION C & D: LABEL STRUCTURE & WINDOW OVERLAP DYNAMICS
+--------------------------------------------------------------------------------
+Train Positive Rate: 37.95%
+Val Positive Rate:   52.37%
+Test Positive Rate:  31.90%
+Capture Homogeneity: 100% of PCAP captures are session-pure (0 label transitions within capture)
+Window Overlap at K=30: 20 queries (66.67% query overlap between consecutive windows)
+Window Overlap at K=10: 0 queries (0.00% overlap, adjacent non-overlapping blocks)
+Cross-Partition Leakage: 0.00% (Strictly 0 captures shared between Train, Val, Test)
+
+--------------------------------------------------------------------------------
+SECTION F: POINTWISE NON-NEURAL BASELINES (EVALUATED ON TEST SET)
+--------------------------------------------------------------------------------
+Majority Classifier:    Acc=68.10%, F1=0.0000
+Logistic Regression:    Acc=73.80%, FPR=37.92%, Recall=98.84%, F1=0.7065, ROC-AUC=0.8075
+Decision Tree (Depth 3): Acc=73.75%, FPR=38.38%, Recall=99.64%, F1=0.7077, ROC-AUC=0.8069
+================================================================================

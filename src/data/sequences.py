@@ -47,17 +47,38 @@ class StreamingSequenceDataset(Dataset):
         features: np.ndarray,
         windows: List[SequenceWindow],
         max_seq_len: int = DEFAULT_MAX_SEQ_LEN,
+        shuffle_order: bool = False,
+        seed: int = 42,
+        shuffle_labels: bool = False,
+        label_seed: int = 42,
     ):
         """
         Args:
             features: 2D numpy array of shape (Total_Capture_Queries, Feature_Dim).
             windows: List of SequenceWindow objects referencing slices in features.
             max_seq_len: Maximum sequence horizon length for zero-padding.
+            shuffle_order: If True, permutes observation order within each window for order ablation.
+            seed: Base random seed for deterministic per-window permutation.
+            shuffle_labels: If True, permutes target labels for negative-control Y-permutation test.
+            label_seed: Random seed for deterministic label permutation.
         """
         self.features = torch.tensor(features, dtype=torch.float32)
         self.windows = windows
         self.max_seq_len = max_seq_len
         self.feature_dim = features.shape[1] if features.ndim > 1 else 1
+        self.shuffle_order = shuffle_order
+        self.seed = seed
+        self.shuffle_labels = shuffle_labels
+        self.label_seed = label_seed
+
+        if self.shuffle_labels:
+            g = torch.Generator()
+            g.manual_seed(self.label_seed)
+            perm = torch.randperm(len(self.windows), generator=g)
+            original_labels = [w.label for w in self.windows]
+            self.permuted_labels = [original_labels[p.item()] for p in perm]
+        else:
+            self.permuted_labels = None
 
     def __len__(self) -> int:
         return len(self.windows)
@@ -66,6 +87,13 @@ class StreamingSequenceDataset(Dataset):
         win = self.windows[idx]
         seq_slice = self.features[win.start_idx : win.end_idx]
         actual_len = win.seq_len
+
+        # Controlled Temporal-Order Ablation: Permute observation order within this window
+        if self.shuffle_order and actual_len > 1:
+            g = torch.Generator()
+            g.manual_seed(self.seed + idx * 10007)
+            perm = torch.randperm(actual_len, generator=g)
+            seq_slice = seq_slice[perm]
 
         # Pad sequence to max_seq_len with zeros if actual_len < max_seq_len
         if actual_len < self.max_seq_len:
@@ -77,7 +105,8 @@ class StreamingSequenceDataset(Dataset):
         else:
             padded_seq = seq_slice[: self.max_seq_len]
 
-        label_tensor = torch.tensor(win.label, dtype=torch.float32)
+        label_val = self.permuted_labels[idx] if self.permuted_labels is not None else win.label
+        label_tensor = torch.tensor(label_val, dtype=torch.long)
 
         meta = {
             "capture_id": win.capture_id,

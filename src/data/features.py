@@ -16,14 +16,16 @@ from src.data.schema import CAUSAL_FEATURE_NAMES, FORBIDDEN_MODEL_COLUMNS
 
 class CausalFeatureExtractor:
     """
-    Extracts the 12 approved causal features from raw CIC-Bell stateless DataFrames.
+    Extracts approved causal features from raw CIC-Bell stateless DataFrames.
     
-    Guarantees strict causal ordering and excludes non-causal or leakage-prone columns.
+    Guarantees strict causal ordering, excludes non-causal or leakage-prone columns,
+    and supports controlled feature ablation.
     """
 
-    def __init__(self, epsilon: float = 1e-6):
+    def __init__(self, epsilon: float = 1e-6, exclude_features: Optional[List[str]] = None):
         self.epsilon = epsilon
-        self.feature_names = CAUSAL_FEATURE_NAMES
+        self.exclude_features = exclude_features or []
+        self.feature_names = [f for f in CAUSAL_FEATURE_NAMES if f not in self.exclude_features]
 
     def extract_from_dataframe(self, df: pd.DataFrame) -> pd.DataFrame:
         """
@@ -106,10 +108,15 @@ class FeatureScaler:
     Must be fit ONLY on training data partitions and applied identically to val/test.
     """
 
-    def __init__(self, clip_outliers: bool = True, clip_std: float = 8.0):
+    def __init__(
+        self,
+        clip_outliers: bool = True,
+        clip_std: float = 8.0,
+        feature_names: Optional[List[str]] = None,
+    ):
         self.clip_outliers = clip_outliers
         self.clip_std = clip_std
-        self.feature_names: List[str] = CAUSAL_FEATURE_NAMES
+        self.feature_names: List[str] = feature_names or CAUSAL_FEATURE_NAMES
         self.mean_: Optional[np.ndarray] = None
         self.scale_: Optional[np.ndarray] = None
         self.is_fitted: bool = False
