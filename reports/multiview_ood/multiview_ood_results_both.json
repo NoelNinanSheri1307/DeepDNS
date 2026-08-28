@@ -1,0 +1,152 @@
+{
+  "K_5": {
+    "model_name": "MultiView_BOTH_K5",
+    "dataset_split": "ood_test",
+    "total_samples": 20683,
+    "accuracy": 0.891312,
+    "precision": 0.976171,
+    "recall": 0.829746,
+    "specificity": 0.973095,
+    "f1": 0.897022,
+    "fpr": 0.026905,
+    "fnr": 0.170254,
+    "roc_auc": 0.983491,
+    "pr_auc": 0.974894,
+    "confusion_matrix": {
+      "tp": 9791,
+      "fp": 239,
+      "tn": 8644,
+      "fn": 2009
+    }
+  },
+  "K_10": {
+    "model_name": "MultiView_BOTH_K10",
+    "dataset_split": "ood_test",
+    "total_samples": 20683,
+    "accuracy": 0.965624,
+    "precision": 0.99359,
+    "recall": 0.945847,
+    "specificity": 0.991895,
+    "f1": 0.969131,
+    "fpr": 0.008105,
+    "fnr": 0.054153,
+    "roc_auc": 0.995425,
+    "pr_auc": 0.993386,
+    "confusion_matrix": {
+      "tp": 11161,
+      "fp": 72,
+      "tn": 8811,
+      "fn": 639
+    }
+  },
+  "K_15": {
+    "model_name": "MultiView_BOTH_K15",
+    "dataset_split": "ood_test",
+    "total_samples": 20683,
+    "accuracy": 0.993086,
+    "precision": 0.997609,
+    "recall": 0.990254,
+    "specificity": 0.996848,
+    "f1": 0.993918,
+    "fpr": 0.003152,
+    "fnr": 0.009746,
+    "roc_auc": 0.998578,
+    "pr_auc": 0.997661,
+    "confusion_matrix": {
+      "tp": 11685,
+      "fp": 28,
+      "tn": 8855,
+      "fn": 115
+    }
+  },
+  "K_20": {
+    "model_name": "MultiView_BOTH_K20",
+    "dataset_split": "ood_test",
+    "total_samples": 20683,
+    "accuracy": 0.995649,
+    "precision": 0.997198,
+    "recall": 0.995169,
+    "specificity": 0.996285,
+    "f1": 0.996183,
+    "fpr": 0.003715,
+    "fnr": 0.004831,
+    "roc_auc": 0.999567,
+    "pr_auc": 0.9995,
+    "confusion_matrix": {
+      "tp": 11743,
+      "fp": 33,
+      "tn": 8850,
+      "fn": 57
+    }
+  },
+  "K_25": {
+    "model_name": "MultiView_BOTH_K25",
+    "dataset_split": "ood_test",
+    "total_samples": 20683,
+    "accuracy": 0.996084,
+    "precision": 0.997876,
+    "recall": 0.995254,
+    "specificity": 0.997186,
+    "f1": 0.996563,
+    "fpr": 0.002814,
+    "fnr": 0.004746,
+    "roc_auc": 0.999296,
+    "pr_auc": 0.998739,
+    "confusion_matrix": {
+      "tp": 11744,
+      "fp": 25,
+      "tn": 8858,
+      "fn": 56
+    }
+  },
+  "K_30": {
+    "model_name": "MultiView_BOTH_K30",
+    "dataset_split": "ood_test",
+    "total_samples": 20683,
+    "accuracy": 0.995939,
+    "precision": 0.998468,
+    "recall": 0.994407,
+    "specificity": 0.997974,
+    "f1": 0.996433,
+    "fpr": 0.002026,
+    "fnr": 0.005593,
+    "roc_auc": 0.99937,
+    "pr_auc": 0.999565,
+    "confusion_matrix": {
+      "tp": 11734,
+      "fp": 18,
+      "tn": 8865,
+      "fn": 66
+    }
+  },
+  "modality_breakdown_k30": {
+    "video_only": {
+      "modality": "video_only",
+      "total_windows": 4290,
+      "accuracy": 99.14,
+      "precision": 100.0,
+      "recall": 99.14,
+      "f1_score": 0.9957,
+      "confusion_matrix": {
+        "TN": 0,
+        "FP": 0,
+        "FN": 37,
+        "TP": 4253
+      }
+    },
+    "text_only": {
+      "modality": "text_only",
+      "total_windows": 7510,
+      "accuracy": 99.61,
+      "precision": 100.0,
+      "recall": 99.61,
+      "f1_score": 0.9981,
+      "confusion_matrix": {
+        "TN": 0,
+        "FP": 0,
+        "FN": 29,
+        "TP": 7481
+      }
+    }
+  }
+}

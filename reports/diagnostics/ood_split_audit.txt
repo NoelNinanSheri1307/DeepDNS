@@ -1,0 +1,23 @@
+================================================================================
+DEEPDNS LEAVE-ONE-MODALITY-OUT (LOMO) OOD SPLIT AUDIT REPORT
+================================================================================
+
+Status:                      PASSED_STRICT_ISOLATION
+Split Strategy:              Leave_One_Modality_Out_Capture_Grouped
+Training Modalities:         ['audio', 'exe', 'compressed']
+Held-Out Test Modalities:    ['video', 'text']
+Modality Overlap:            0 (Zero Leakage)
+Capture Overlap:             0 (Zero Leakage)
+
+PARTITION COMPOSITION:
+  Train: 465,648 queries, 46,825 windows (10 captures)
+  Val:   86,025 queries, 8,680 windows (3 captures)
+  Test:  205,538 queries, 20,683 windows (5 captures)
+
+CAPTURES IN TEST SET (100% UNSEEN MODALITIES & CAPTURES):
+  - heavy_text           (Modality: text, Intensity: heavy, Rows: 71,102)
+  - light_video          (Modality: video, Intensity: light, Rows: 4,371)
+  - heavy_video          (Modality: video, Intensity: heavy, Rows: 38,012)
+  - light_text           (Modality: text, Intensity: light, Rows: 3,479)
+  - benign_2             (Modality: None, Intensity: standard, Rows: 88,574)
+================================================================================

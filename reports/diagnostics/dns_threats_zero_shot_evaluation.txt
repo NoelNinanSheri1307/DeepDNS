@@ -1,0 +1,17 @@
+================================================================================
+ZERO-SHOT EXTERNAL GENERALIZATION REPORT: DNS_THREATS DATASET
+================================================================================
+
+Model:                   multiview_lexical_only.pt (Trained strictly on CIC-Bell)
+Evaluation Mode:         Zero-Shot External Generalization (No Fine-Tuning)
+Domains Evaluated:       100,000
+
+Accuracy:                37.89%
+Precision:               0.0%
+Recall (Detection Rate): 0.0%
+F1-Score:                0.0
+False Positive Rate:     0.0%
+ROC-AUC:                 0.5986
+PR-AUC:                  0.6669
+Confusion Matrix:        {'TN': 37892, 'FP': 0, 'FN': 62108, 'TP': 0}
+================================================================================

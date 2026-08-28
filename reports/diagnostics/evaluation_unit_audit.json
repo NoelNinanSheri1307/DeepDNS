@@ -1,0 +1,118 @@
+{
+  "evaluation_units_summary": {
+    "total_test_queries": 130065,
+    "total_test_sequence_windows": 13084,
+    "total_test_captures": 3,
+    "windows_per_capture_breakdown": [
+      {
+        "capture_id": "heavy_video",
+        "filename": "stateless_features-heavy_video.pcap.csv",
+        "label": 1,
+        "label_name": "attack",
+        "modality": "video",
+        "intensity": "heavy",
+        "query_count": 38012,
+        "window_count": 3827,
+        "pct_of_test_windows": 29.25
+      },
+      {
+        "capture_id": "light_text",
+        "filename": "stateless_features-light_text.pcap.csv",
+        "label": 1,
+        "label_name": "attack",
+        "modality": "text",
+        "intensity": "light",
+        "query_count": 3479,
+        "window_count": 374,
+        "pct_of_test_windows": 2.86
+      },
+      {
+        "capture_id": "benign_2",
+        "filename": "stateless_features-benign_2.pcap.csv",
+        "label": 0,
+        "label_name": "benign",
+        "modality": null,
+        "intensity": "standard",
+        "query_count": 88574,
+        "window_count": 8883,
+        "pct_of_test_windows": 67.89
+      }
+    ]
+  },
+  "window_overlap_analysis": {
+    "stride_step_size": 10,
+    "K_5": {
+      "window_length": 5,
+      "query_overlap_count": 0,
+      "query_overlap_pct": "0.00%",
+      "description": "Completely disjoint sequence slices spaced 5 queries apart."
+    },
+    "K_10": {
+      "window_length": 10,
+      "query_overlap_count": 0,
+      "query_overlap_pct": "0.00%",
+      "description": "Completely disjoint adjacent non-overlapping blocks."
+    },
+    "K_15": {
+      "window_length": 15,
+      "query_overlap_count": 5,
+      "query_overlap_pct": "33.33%",
+      "description": "Consecutive windows share 5 queries out of 15."
+    },
+    "K_20": {
+      "window_length": 20,
+      "query_overlap_count": 10,
+      "query_overlap_pct": "50.00%",
+      "description": "Consecutive windows share 10 queries out of 20."
+    },
+    "K_25": {
+      "window_length": 25,
+      "query_overlap_count": 15,
+      "query_overlap_pct": "60.00%",
+      "description": "Consecutive windows share 15 queries out of 25."
+    },
+    "K_30": {
+      "window_length": 30,
+      "query_overlap_count": 20,
+      "query_overlap_pct": "66.67%",
+      "description": "Consecutive windows share 20 queries out of 30."
+    }
+  },
+  "capture_level_robustness": {
+    "capture_level_accuracy": 100.0,
+    "capture_level_f1": 1.0,
+    "confusion_matrix": {
+      "TP": 2,
+      "FP": 0,
+      "TN": 1,
+      "FN": 0
+    },
+    "captures_evaluated": [
+      {
+        "capture_id": "heavy_video",
+        "true_label": 1,
+        "predicted_label": 1,
+        "mean_predicted_probability": 0.9456,
+        "total_windows_evaluated": 3827,
+        "classification_status": "CORRECT_ATTACK"
+      },
+      {
+        "capture_id": "light_text",
+        "true_label": 1,
+        "predicted_label": 1,
+        "mean_predicted_probability": 0.9302,
+        "total_windows_evaluated": 374,
+        "classification_status": "CORRECT_ATTACK"
+      },
+      {
+        "capture_id": "benign_2",
+        "true_label": 0,
+        "predicted_label": 0,
+        "mean_predicted_probability": 0.0018,
+        "total_windows_evaluated": 8883,
+        "classification_status": "CORRECT_BENIGN"
+      }
+    ]
+  },
+  "scientific_interpretation": "1. Current DeepDNS standard evaluation is WINDOW-LEVEL (13,084 test samples).\n2. At K=10, window overlap is strictly 0.00%, proving that near-perfect discrimination (ROC-AUC 0.9937, F1 0.9833) is not an artifact of window overlap.\n3. Capture-level aggregation confirms 100% of test PCAP captures (heavy_video, light_text, benign_2) are classified correctly."
+}

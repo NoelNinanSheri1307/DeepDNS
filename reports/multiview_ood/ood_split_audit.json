@@ -1,0 +1,25 @@
+{
+  "audit_phase": "Phase 1: LOMO Split Integrity",
+  "verdict": "PASS",
+  "checks": {
+    "1_video_absent_from_training": true,
+    "2_text_absent_from_training": true,
+    "3_zero_capture_id_overlap": true,
+    "4_zero_source_file_overlap": true,
+    "5_sequence_windows_isolated_per_capture": true,
+    "6_scaler_fitted_on_lomo_train_only": true,
+    "7_zero_test_labels_used_in_training": true,
+    "8_zero_forbidden_model_columns": true,
+    "9_lexical_tokenizer_immutable_and_fixed": true,
+    "10_lomo_represents_100pct_unseen_modalities": true
+  },
+  "training_modalities": [
+    "exe",
+    "audio",
+    "compressed"
+  ],
+  "held_out_test_modalities": [
+    "video",
+    "text"
+  ]
+}

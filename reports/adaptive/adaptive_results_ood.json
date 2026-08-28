@@ -1,0 +1,171 @@
+{
+  "Fixed_K5": {
+    "strategy": "Fixed Horizon K=5",
+    "accuracy": 89.13,
+    "precision": 97.62,
+    "recall": 82.97,
+    "f1_score": 0.897,
+    "fpr": 2.6905,
+    "roc_auc": 0.9835,
+    "pr_auc": 0.9749,
+    "mean_stopping_horizon": 5.0,
+    "median_stopping_horizon": 5.0,
+    "early_decision_pct": 100.0,
+    "confusion_matrix": {
+      "TP": 9791,
+      "FP": 239,
+      "TN": 8644,
+      "FN": 2009
+    }
+  },
+  "Fixed_K10": {
+    "strategy": "Fixed Horizon K=10",
+    "accuracy": 96.56,
+    "precision": 99.36,
+    "recall": 94.58,
+    "f1_score": 0.9691,
+    "fpr": 0.8105,
+    "roc_auc": 0.9954,
+    "pr_auc": 0.9934,
+    "mean_stopping_horizon": 10.0,
+    "median_stopping_horizon": 10.0,
+    "early_decision_pct": 100.0,
+    "confusion_matrix": {
+      "TP": 11161,
+      "FP": 72,
+      "TN": 8811,
+      "FN": 639
+    }
+  },
+  "Fixed_K15": {
+    "strategy": "Fixed Horizon K=15",
+    "accuracy": 99.31,
+    "precision": 99.76,
+    "recall": 99.03,
+    "f1_score": 0.9939,
+    "fpr": 0.3152,
+    "roc_auc": 0.9986,
+    "pr_auc": 0.9977,
+    "mean_stopping_horizon": 15.0,
+    "median_stopping_horizon": 15.0,
+    "early_decision_pct": 100.0,
+    "confusion_matrix": {
+      "TP": 11685,
+      "FP": 28,
+      "TN": 8855,
+      "FN": 115
+    }
+  },
+  "Fixed_K20": {
+    "strategy": "Fixed Horizon K=20",
+    "accuracy": 99.56,
+    "precision": 99.72,
+    "recall": 99.52,
+    "f1_score": 0.9962,
+    "fpr": 0.3715,
+    "roc_auc": 0.9996,
+    "pr_auc": 0.9995,
+    "mean_stopping_horizon": 20.0,
+    "median_stopping_horizon": 20.0,
+    "early_decision_pct": 100.0,
+    "confusion_matrix": {
+      "TP": 11743,
+      "FP": 33,
+      "TN": 8850,
+      "FN": 57
+    }
+  },
+  "Fixed_K25": {
+    "strategy": "Fixed Horizon K=25",
+    "accuracy": 99.61,
+    "precision": 99.79,
+    "recall": 99.53,
+    "f1_score": 0.9966,
+    "fpr": 0.2814,
+    "roc_auc": 0.9993,
+    "pr_auc": 0.9987,
+    "mean_stopping_horizon": 25.0,
+    "median_stopping_horizon": 25.0,
+    "early_decision_pct": 100.0,
+    "confusion_matrix": {
+      "TP": 11744,
+      "FP": 25,
+      "TN": 8858,
+      "FN": 56
+    }
+  },
+  "Fixed_K30": {
+    "strategy": "Fixed Horizon K=30",
+    "accuracy": 99.59,
+    "precision": 99.85,
+    "recall": 99.44,
+    "f1_score": 0.9964,
+    "fpr": 0.2026,
+    "roc_auc": 0.9994,
+    "pr_auc": 0.9996,
+    "mean_stopping_horizon": 30.0,
+    "median_stopping_horizon": 30.0,
+    "early_decision_pct": 0.0,
+    "confusion_matrix": {
+      "TP": 11734,
+      "FP": 18,
+      "TN": 8865,
+      "FN": 66
+    }
+  },
+  "Adaptive_Confidence": {
+    "strategy": "Adaptive Horizon Confidence Thresholding",
+    "tau_attack": 0.8,
+    "tau_benign": 0.01,
+    "accuracy": 99.33,
+    "precision": 99.62,
+    "recall": 99.21,
+    "f1_score": 0.9941,
+    "fpr": 0.5066,
+    "mean_stopping_horizon": 10.3,
+    "median_stopping_horizon": 10.0,
+    "early_decision_pct": 99.93,
+    "horizon_decision_percentages": {
+      "5": 41.57,
+      "10": 15.2,
+      "15": 39.19,
+      "20": 3.8,
+      "25": 0.17,
+      "30": 0.07
+    },
+    "confusion_matrix": {
+      "TP": 11707,
+      "FP": 45,
+      "TN": 8838,
+      "FN": 93
+    }
+  },
+  "Adaptive_CUSUM": {
+    "strategy": "Sequential CUSUM Statistical Change Detector",
+    "h_attack": 4.0,
+    "h_benign": 4.0,
+    "drift": 0.0,
+    "accuracy": 97.74,
+    "precision": 99.86,
+    "recall": 96.17,
+    "f1_score": 0.9798,
+    "fpr": 0.1801,
+    "mean_stopping_horizon": 12.96,
+    "median_stopping_horizon": 15.0,
+    "early_decision_pct": 99.8,
+    "horizon_decision_percentages": {
+      "5": 41.12,
+      "10": 4.01,
+      "15": 13.1,
+      "20": 38.24,
+      "25": 3.34,
+      "30": 0.2
+    },
+    "confusion_matrix": {
+      "TP": 11348,
+      "FP": 16,
+      "TN": 8867,
+      "FN": 452
+    }
+  }
+}

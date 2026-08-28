@@ -1,0 +1,326 @@
+{
+  "fixed_k": [
+    {
+      "name": "Dual-View Fixed K=5",
+      "split": "Held-Out OOD",
+      "accuracy": 89.13,
+      "recall": 82.97,
+      "precision": 97.62,
+      "fpr": 2.6905,
+      "f1_score": 0.897,
+      "mean_horizon": 5.0,
+      "query_savings_pct": 83.33,
+      "early_decision_pct": 100.0,
+      "confusion_matrix": {
+        "TP": 9791,
+        "FP": 239,
+        "TN": 8644,
+        "FN": 2009
+      },
+      "bootstrap_95_ci": {
+        "recall_95_ci": [
+          82.34,
+          83.67
+        ],
+        "fpr_95_ci": [
+          2.3691,
+          3.0566
+        ],
+        "precision_95_ci": [
+          97.31,
+          97.9
+        ],
+        "f1_95_ci": [
+          0.8928,
+          0.9015
+        ],
+        "mean_k_95_ci": [
+          5.0,
+          5.0
+        ]
+      }
+    },
+    {
+      "name": "Dual-View Fixed K=10",
+      "split": "Held-Out OOD",
+      "accuracy": 96.56,
+      "recall": 94.58,
+      "precision": 99.36,
+      "fpr": 0.8105,
+      "f1_score": 0.9691,
+      "mean_horizon": 10.0,
+      "query_savings_pct": 66.67,
+      "early_decision_pct": 100.0,
+      "confusion_matrix": {
+        "TP": 11161,
+        "FP": 72,
+        "TN": 8811,
+        "FN": 639
+      },
+      "bootstrap_95_ci": {
+        "recall_95_ci": [
+          94.16,
+          95.0
+        ],
+        "fpr_95_ci": [
+          0.6196,
+          0.9928
+        ],
+        "precision_95_ci": [
+          99.21,
+          99.51
+        ],
+        "f1_95_ci": [
+          0.9669,
+          0.9714
+        ],
+        "mean_k_95_ci": [
+          10.0,
+          10.0
+        ]
+      }
+    },
+    {
+      "name": "Dual-View Fixed K=15",
+      "split": "Held-Out OOD",
+      "accuracy": 99.31,
+      "recall": 99.03,
+      "precision": 99.76,
+      "fpr": 0.3152,
+      "f1_score": 0.9939,
+      "mean_horizon": 15.0,
+      "query_savings_pct": 50.0,
+      "early_decision_pct": 100.0,
+      "confusion_matrix": {
+        "TP": 11685,
+        "FP": 28,
+        "TN": 8855,
+        "FN": 115
+      },
+      "bootstrap_95_ci": {
+        "recall_95_ci": [
+          98.85,
+          99.19
+        ],
+        "fpr_95_ci": [
+          0.2049,
+          0.428
+        ],
+        "precision_95_ci": [
+          99.67,
+          99.85
+        ],
+        "f1_95_ci": [
+          0.9929,
+          0.9949
+        ],
+        "mean_k_95_ci": [
+          15.0,
+          15.0
+        ]
+      }
+    },
+    {
+      "name": "Dual-View Fixed K=20",
+      "split": "Held-Out OOD",
+      "accuracy": 99.56,
+      "recall": 99.52,
+      "precision": 99.72,
+      "fpr": 0.3715,
+      "f1_score": 0.9962,
+      "mean_horizon": 20.0,
+      "query_savings_pct": 33.33,
+      "early_decision_pct": 100.0,
+      "confusion_matrix": {
+        "TP": 11743,
+        "FP": 33,
+        "TN": 8850,
+        "FN": 57
+      },
+      "bootstrap_95_ci": {
+        "recall_95_ci": [
+          99.39,
+          99.64
+        ],
+        "fpr_95_ci": [
+          0.2496,
+          0.4973
+        ],
+        "precision_95_ci": [
+          99.63,
+          99.81
+        ],
+        "f1_95_ci": [
+          0.9954,
+          0.9969
+        ],
+        "mean_k_95_ci": [
+          20.0,
+          20.0
+        ]
+      }
+    },
+    {
+      "name": "Dual-View Fixed K=25",
+      "split": "Held-Out OOD",
+      "accuracy": 99.61,
+      "recall": 99.53,
+      "precision": 99.79,
+      "fpr": 0.2814,
+      "f1_score": 0.9966,
+      "mean_horizon": 25.0,
+      "query_savings_pct": 16.67,
+      "early_decision_pct": 100.0,
+      "confusion_matrix": {
+        "TP": 11744,
+        "FP": 25,
+        "TN": 8858,
+        "FN": 56
+      },
+      "bootstrap_95_ci": {
+        "recall_95_ci": [
+          99.4,
+          99.65
+        ],
+        "fpr_95_ci": [
+          0.1778,
+          0.3942
+        ],
+        "precision_95_ci": [
+          99.7,
+          99.87
+        ],
+        "f1_95_ci": [
+          0.9958,
+          0.9973
+        ],
+        "mean_k_95_ci": [
+          25.0,
+          25.0
+        ]
+      }
+    },
+    {
+      "name": "Dual-View Fixed K=30",
+      "split": "Held-Out OOD",
+      "accuracy": 99.59,
+      "recall": 99.44,
+      "precision": 99.85,
+      "fpr": 0.2026,
+      "f1_score": 0.9964,
+      "mean_horizon": 30.0,
+      "query_savings_pct": 0.0,
+      "early_decision_pct": 0.0,
+      "confusion_matrix": {
+        "TP": 11734,
+        "FP": 18,
+        "TN": 8865,
+        "FN": 66
+      },
+      "bootstrap_95_ci": {
+        "recall_95_ci": [
+          99.3,
+          99.57
+        ],
+        "fpr_95_ci": [
+          0.1123,
+          0.2939
+        ],
+        "precision_95_ci": [
+          99.78,
+          99.92
+        ],
+        "f1_95_ci": [
+          0.9957,
+          0.9971
+        ],
+        "mean_k_95_ci": [
+          30.0,
+          30.0
+        ]
+      }
+    }
+  ],
+  "adaptive_inference": [
+    {
+      "name": "Dual-View AEC (Calibrated)",
+      "split": "Held-Out OOD",
+      "accuracy": 99.33,
+      "recall": 99.21,
+      "precision": 99.62,
+      "fpr": 0.5066,
+      "f1_score": 0.9941,
+      "mean_horizon": 10.3,
+      "query_savings_pct": 65.67,
+      "early_decision_pct": 99.93,
+      "confusion_matrix": {
+        "TP": 11707,
+        "FP": 45,
+        "TN": 8838,
+        "FN": 93
+      },
+      "bootstrap_95_ci": {
+        "recall_95_ci": [
+          99.05,
+          99.36
+        ],
+        "fpr_95_ci": [
+          0.373,
+          0.6536
+        ],
+        "precision_95_ci": [
+          99.51,
+          99.72
+        ],
+        "f1_95_ci": [
+          0.9931,
+          0.995
+        ],
+        "mean_k_95_ci": [
+          10.23,
+          10.37
+        ]
+      }
+    },
+    {
+      "name": "Dual-View CUSUM",
+      "split": "Held-Out OOD",
+      "accuracy": 97.74,
+      "recall": 96.17,
+      "precision": 99.86,
+      "fpr": 0.1801,
+      "f1_score": 0.9798,
+      "mean_horizon": 12.96,
+      "query_savings_pct": 56.8,
+      "early_decision_pct": 99.8,
+      "confusion_matrix": {
+        "TP": 11348,
+        "FP": 16,
+        "TN": 8867,
+        "FN": 452
+      },
+      "bootstrap_95_ci": {
+        "recall_95_ci": [
+          95.81,
+          96.47
+        ],
+        "fpr_95_ci": [
+          0.1012,
+          0.2704
+        ],
+        "precision_95_ci": [
+          99.79,
+          99.92
+        ],
+        "f1_95_ci": [
+          0.9779,
+          0.9814
+        ],
+        "mean_k_95_ci": [
+          12.86,
+          13.06
+        ]
+      }
+    }
+  ]
+}

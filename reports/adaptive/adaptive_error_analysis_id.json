@@ -1,0 +1,335 @@
+{
+  "partition": "In-Distribution (Standard Split)",
+  "total_test_samples": 13084,
+  "attack_samples": 4201,
+  "benign_samples": 8883,
+  "aec_results": {
+    "calibrated_thresholds": {
+      "tau_attack": 0.95,
+      "tau_benign": 0.15
+    },
+    "metrics": {
+      "accuracy": 99.33,
+      "precision": 99.73,
+      "recall": 98.17,
+      "f1_score": 0.9894,
+      "fpr": 0.1238,
+      "fnr": 1.8329,
+      "mean_stopping_horizon": 13.13,
+      "median_stopping_horizon": 5.0,
+      "horizon_decision_percentages": {
+        "5": 63.51,
+        "10": 3.87,
+        "15": 0.67,
+        "20": 0.42,
+        "25": 1.51,
+        "30": 30.01
+      },
+      "early_decision_percentage": 69.99,
+      "confusion_matrix": {
+        "TP": 4124,
+        "FP": 11,
+        "TN": 8872,
+        "FN": 77
+      },
+      "total_samples": 13084
+    },
+    "query_volume_savings_pct": 56.23,
+    "bootstrap_95_ci": {
+      "recall_95_ci": [
+        97.74,
+        98.56
+      ],
+      "fpr_95_ci": [
+        0.0561,
+        0.1995
+      ],
+      "precision_95_ci": [
+        99.57,
+        2
+      ],
+      "f1_95_ci": [
+        0.9872,
+        0.9916
+      ],
+      "mean_k_95_ci": [
+        12.93,
+        13.31
+      ]
+    },
+    "horizon_error_decomposition": {
+      "K_5": {
+        "horizon": 5,
+        "total_decisions_at_k": 8310,
+        "pct_of_total_decisions": 63.51,
+        "true_positive_tp": 0,
+        "true_negative_tn": 8257,
+        "false_positive_fp": 0,
+        "false_negative_fn": 53,
+        "total_errors": 53,
+        "horizon_error_rate_pct": 0.64,
+        "attack_decisions": 0,
+        "benign_decisions": 8310,
+        "modality_counts": {
+          "video": 50,
+          "text": 3,
+          "none": 8257
+        }
+      },
+      "K_10": {
+        "horizon": 10,
+        "total_decisions_at_k": 507,
+        "pct_of_total_decisions": 3.87,
+        "true_positive_tp": 0,
+        "true_negative_tn": 502,
+        "false_positive_fp": 1,
+        "false_negative_fn": 4,
+        "total_errors": 5,
+        "horizon_error_rate_pct": 0.99,
+        "attack_decisions": 1,
+        "benign_decisions": 506,
+        "modality_counts": {
+          "video": 4,
+          "none": 503
+        }
+      },
+      "K_15": {
+        "horizon": 15,
+        "total_decisions_at_k": 88,
+        "pct_of_total_decisions": 0.67,
+        "true_positive_tp": 4,
+        "true_negative_tn": 80,
+        "false_positive_fp": 1,
+        "false_negative_fn": 3,
+        "total_errors": 4,
+        "horizon_error_rate_pct": 4.55,
+        "attack_decisions": 5,
+        "benign_decisions": 83,
+        "modality_counts": {
+          "video": 7,
+          "none": 81
+        }
+      },
+      "K_20": {
+        "horizon": 20,
+        "total_decisions_at_k": 55,
+        "pct_of_total_decisions": 0.42,
+        "true_positive_tp": 35,
+        "true_negative_tn": 18,
+        "false_positive_fp": 0,
+        "false_negative_fn": 2,
+        "total_errors": 2,
+        "horizon_error_rate_pct": 3.64,
+        "attack_decisions": 35,
+        "benign_decisions": 20,
+        "modality_counts": {
+          "video": 34,
+          "text": 3,
+          "none": 18
+        }
+      },
+      "K_25": {
+        "horizon": 25,
+        "total_decisions_at_k": 197,
+        "pct_of_total_decisions": 1.51,
+        "true_positive_tp": 183,
+        "true_negative_tn": 9,
+        "false_positive_fp": 2,
+        "false_negative_fn": 3,
+        "total_errors": 5,
+        "horizon_error_rate_pct": 2.54,
+        "attack_decisions": 185,
+        "benign_decisions": 12,
+        "modality_counts": {
+          "video": 166,
+          "text": 20,
+          "none": 11
+        }
+      },
+      "K_30": {
+        "horizon": 30,
+        "total_decisions_at_k": 3927,
+        "pct_of_total_decisions": 30.01,
+        "true_positive_tp": 3902,
+        "true_negative_tn": 6,
+        "false_positive_fp": 7,
+        "false_negative_fn": 12,
+        "total_errors": 19,
+        "horizon_error_rate_pct": 0.48,
+        "attack_decisions": 3909,
+        "benign_decisions": 18,
+        "modality_counts": {
+          "video": 3566,
+          "text": 348,
+          "none": 13
+        }
+      }
+    }
+  },
+  "cusum_results": {
+    "parameters": {
+      "h_attack": 4.0,
+      "h_benign": 4.0,
+      "drift": 0.0
+    },
+    "metrics": {
+      "accuracy": 99.32,
+      "precision": 98.77,
+      "recall": 99.12,
+      "f1_score": 0.9894,
+      "fpr": 0.5854,
+      "fnr": 0.8807,
+      "mean_stopping_horizon": 9.22,
+      "median_stopping_horizon": 5.0,
+      "horizon_decision_percentages": {
+        "5": 62.25,
+        "10": 7.96,
+        "15": 14.38,
+        "20": 14.22,
+        "25": 0.92,
+        "30": 0.26
+      },
+      "early_decision_percentage": 99.74,
+      "confusion_matrix": {
+        "TP": 4164,
+        "FP": 52,
+        "TN": 8831,
+        "FN": 37
+      },
+      "total_samples": 13084
+    },
+    "query_volume_savings_pct": 69.27,
+    "bootstrap_95_ci": {
+      "recall_95_ci": [
+        98.84,
+        99.38
+      ],
+      "fpr_95_ci": [
+        0.4396,
+        0.7422
+      ],
+      "precision_95_ci": [
+        98.44,
+        2
+      ],
+      "f1_95_ci": [
+        0.9872,
+        0.9915
+      ],
+      "mean_k_95_ci": [
+        9.11,
+        9.31
+      ]
+    },
+    "horizon_error_decomposition": {
+      "K_5": {
+        "horizon": 5,
+        "total_decisions_at_k": 8145,
+        "pct_of_total_decisions": 62.25,
+        "true_positive_tp": 0,
+        "true_negative_tn": 8119,
+        "false_positive_fp": 0,
+        "false_negative_fn": 26,
+        "total_errors": 26,
+        "horizon_error_rate_pct": 0.32,
+        "attack_decisions": 0,
+        "benign_decisions": 8145,
+        "modality_counts": {
+          "video": 24,
+          "text": 2,
+          "none": 8119
+        }
+      },
+      "K_10": {
+        "horizon": 10,
+        "total_decisions_at_k": 1042,
+        "pct_of_total_decisions": 7.96,
+        "true_positive_tp": 405,
+        "true_negative_tn": 618,
+        "false_positive_fp": 18,
+        "false_negative_fn": 1,
+        "total_errors": 19,
+        "horizon_error_rate_pct": 1.82,
+        "attack_decisions": 423,
+        "benign_decisions": 619,
+        "modality_counts": {
+          "video": 375,
+          "text": 31,
+          "none": 636
+        }
+      },
+      "K_15": {
+        "horizon": 15,
+        "total_decisions_at_k": 1882,
+        "pct_of_total_decisions": 14.38,
+        "true_positive_tp": 1792,
+        "true_negative_tn": 70,
+        "false_positive_fp": 18,
+        "false_negative_fn": 2,
+        "total_errors": 20,
+        "horizon_error_rate_pct": 1.06,
+        "attack_decisions": 1810,
+        "benign_decisions": 72,
+        "modality_counts": {
+          "video": 1634,
+          "text": 160,
+          "none": 88
+        }
+      },
+      "K_20": {
+        "horizon": 20,
+        "total_decisions_at_k": 1861,
+        "pct_of_total_decisions": 14.22,
+        "true_positive_tp": 1841,
+        "true_negative_tn": 14,
+        "false_positive_fp": 5,
+        "false_negative_fn": 1,
+        "total_errors": 6,
+        "horizon_error_rate_pct": 0.32,
+        "attack_decisions": 1846,
+        "benign_decisions": 15,
+        "modality_counts": {
+          "video": 1670,
+          "text": 172,
+          "none": 19
+        }
+      },
+      "K_25": {
+        "horizon": 25,
+        "total_decisions_at_k": 120,
+        "pct_of_total_decisions": 0.92,
+        "true_positive_tp": 111,
+        "true_negative_tn": 5,
+        "false_positive_fp": 2,
+        "false_negative_fn": 2,
+        "total_errors": 4,
+        "horizon_error_rate_pct": 3.33,
+        "attack_decisions": 113,
+        "benign_decisions": 7,
+        "modality_counts": {
+          "video": 105,
+          "text": 8,
+          "none": 7
+        }
+      },
+      "K_30": {
+        "horizon": 30,
+        "total_decisions_at_k": 34,
+        "pct_of_total_decisions": 0.26,
+        "true_positive_tp": 15,
+        "true_negative_tn": 5,
+        "false_positive_fp": 9,
+        "false_negative_fn": 5,
+        "total_errors": 14,
+        "horizon_error_rate_pct": 41.18,
+        "attack_decisions": 24,
+        "benign_decisions": 10,
+        "modality_counts": {
+          "video": 19,
+          "text": 1,
+          "none": 14
+        }
+      }
+    }
+  }
+}

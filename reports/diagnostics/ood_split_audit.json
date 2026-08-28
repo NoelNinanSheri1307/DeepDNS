@@ -1,0 +1,28 @@
+{
+  "audit_name": "LOMO_OOD_Split_Audit",
+  "split_strategy": "Leave_One_Modality_Out_Capture_Grouped",
+  "status": "PASSED_STRICT_ISOLATION",
+  "capture_overlap_train_val": 0,
+  "capture_overlap_train_test": 0,
+  "capture_overlap_val_test": 0,
+  "held_out_test_modalities": [
+    "video",
+    "text"
+  ],
+  "training_modalities": [
+    "audio",
+    "exe",
+    "compressed"
+  ],
+  "modality_overlap_train_test": [],
+  "train_captures_count": 10,
+  "val_captures_count": 3,
+  "test_captures_count": 5,
+  "train_queries": 465648,
+  "test_queries": 205538,
+  "train_sequence_windows": 46825,
+  "val_sequence_windows": 8680,
+  "test_sequence_windows": 20683,
+  "scaler_fitted_on_train_only": true,
+  "scaler_path": "C:\\Users\\VICTUS\\deepdns\\data\\processed\\feature_scaler_lomo.json"
+}

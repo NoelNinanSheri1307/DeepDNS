@@ -1,0 +1,36 @@
+{
+  "audit_phase": "Phase 4: Class & Modality Composition",
+  "train": {
+    "total_queries": 465648,
+    "total_windows": 46825,
+    "modality_windows": {
+      "audio": 5393,
+      "compressed": 4651,
+      "exe": 4160,
+      "benign": 32621
+    }
+  },
+  "validation": {
+    "total_queries": 86025,
+    "total_windows": 8680,
+    "modality_windows": {
+      "image": 3743,
+      "benign": 4937
+    }
+  },
+  "test_ood": {
+    "total_queries": 205538,
+    "total_windows": 20683,
+    "modality_windows": {
+      "text": 7510,
+      "video": 4290,
+      "benign": 8883
+    }
+  },
+  "test_class_balance": {
+    "attack_windows": 11800,
+    "benign_windows": 8883,
+    "attack_pct": 57.05,
+    "benign_pct": 42.95
+  }
+}

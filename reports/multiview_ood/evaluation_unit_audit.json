@@ -1,0 +1,44 @@
+{
+  "audit_phase": "Phase 2: Evaluation-Unit & Sample Independence",
+  "total_test_queries": 205538,
+  "total_test_sequence_windows": 20683,
+  "total_test_captures": 5,
+  "stride_step_size": 10,
+  "overlap_dynamics": {
+    "5": {
+      "overlap_queries": 0,
+      "overlap_pct": 0.0,
+      "effective_independent_factor": 1.0
+    },
+    "10": {
+      "overlap_queries": 0,
+      "overlap_pct": 0.0,
+      "effective_independent_factor": 1.0
+    },
+    "15": {
+      "overlap_queries": 5,
+      "overlap_pct": 33.33,
+      "effective_independent_factor": 0.67
+    },
+    "20": {
+      "overlap_queries": 10,
+      "overlap_pct": 50.0,
+      "effective_independent_factor": 0.5
+    },
+    "25": {
+      "overlap_queries": 15,
+      "overlap_pct": 60.0,
+      "effective_independent_factor": 0.4
+    },
+    "30": {
+      "overlap_queries": 20,
+      "overlap_pct": 66.67,
+      "effective_independent_factor": 0.33
+    }
+  },
+  "effective_independent_windows_at_k30": 6894,
+  "labeling_unit": "Window-level (assigned from capture metadata)",
+  "prediction_generation": "Independent forward inference per window",
+  "threshold_selection": "Fixed at standard tau = 0.5 (zero test optimization)",
+  "interpretation": "At K=10, adjacent windows have 0.00% overlap, yielding 20,683 completely disjoint 10-query observation periods."
+}

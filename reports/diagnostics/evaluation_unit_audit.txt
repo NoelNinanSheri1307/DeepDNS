@@ -1,0 +1,25 @@
+================================================================================
+DEEPDNS EVALUATION-UNIT & CAPTURE-LEVEL ROBUSTNESS AUDIT
+================================================================================
+
+1. EVALUATION SAMPLE SIZES IN TEST PARTITION:
+   - Query-Level Total Observations:     130,065 queries
+   - Window-Level Total Test Samples:    13,084 windows
+   - Capture-Level Total PCAP Sessions:  3 captures
+
+2. WINDOW OVERLAP DYNAMICS:
+   - K_5: Overlap = 0.00% (Completely disjoint sequence slices spaced 5 queries apart.)
+   - K_10: Overlap = 0.00% (Completely disjoint adjacent non-overlapping blocks.)
+   - K_15: Overlap = 33.33% (Consecutive windows share 5 queries out of 15.)
+   - K_20: Overlap = 50.00% (Consecutive windows share 10 queries out of 20.)
+   - K_25: Overlap = 60.00% (Consecutive windows share 15 queries out of 25.)
+   - K_30: Overlap = 66.67% (Consecutive windows share 20 queries out of 30.)
+
+3. CAPTURE-LEVEL AGGREGATION RESULTS (DUAL-VIEW MODEL AT K=30):
+   - Capture-Level Accuracy: 100.0%
+   - Capture Confusion Matrix: {'TP': 2, 'FP': 0, 'TN': 1, 'FN': 0}
+     * Capture: heavy_video        | True: 1 | Pred: 1 | Mean Prob: 0.9456 | Status: CORRECT_ATTACK
+     * Capture: light_text         | True: 1 | Pred: 1 | Mean Prob: 0.9302 | Status: CORRECT_ATTACK
+     * Capture: benign_2           | True: 0 | Pred: 0 | Mean Prob: 0.0018 | Status: CORRECT_BENIGN
+
+================================================================================

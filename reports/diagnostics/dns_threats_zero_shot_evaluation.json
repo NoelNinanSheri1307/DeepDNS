@@ -1,0 +1,21 @@
+{
+  "dataset_name": "dns_threats_test_combined_multiclass",
+  "evaluation_type": "Zero-Shot External Generalization (No Fine-Tuning)",
+  "model_evaluated": "multiview_lexical_only.pt (Trained strictly on CIC-Bell)",
+  "total_samples_evaluated": 100000,
+  "positive_rate": 0.6211,
+  "accuracy": 37.89,
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1_score": 0.0,
+  "fpr": 0.0,
+  "fnr": 100.0,
+  "roc_auc": 0.5986,
+  "pr_auc": 0.6669,
+  "confusion_matrix": {
+    "TN": 37892,
+    "FP": 0,
+    "FN": 62108,
+    "TP": 0
+  }
+}
