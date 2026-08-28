@@ -1,0 +1,630 @@
+{
+  "pair_records": [
+    {
+      "pair_id": "data/raw/cic_bell_dns_exf_2021/Attack_Heavy_Benign/Attacks/heavy_audio.pcap.csv",
+      "category": "Attack",
+      "intensity": "heavy",
+      "modality": "audio",
+      "stateless_rows": 35795,
+      "stateful_rows": 10735,
+      "row_match": false,
+      "row_diff": 25060,
+      "stateless_file": "stateless_features-heavy_audio.pcap.csv",
+      "stateful_file": "stateful_features-heavy_audio.pcap.csv",
+      "ts_monotonic": false,
+      "start_time": "2020-11-22 14:52:31.248351",
+      "end_time": "2020-11-22 20:43:30.969597",
+      "duration_sec": 21059.721246,
+      "queries_per_sec": 1.7
+    },
+    {
+      "pair_id": "data/raw/cic_bell_dns_exf_2021/Attack_Heavy_Benign/Attacks/heavy_compressed.pcap.csv",
+      "category": "Attack",
+      "intensity": "heavy",
+      "modality": "compressed",
+      "stateless_rows": 35746,
+      "stateful_rows": 10424,
+      "row_match": false,
+      "row_diff": 25322,
+      "stateless_file": "stateless_features-heavy_compressed.pcap.csv",
+      "stateful_file": "stateful_features-heavy_compressed.pcap.csv",
+      "ts_monotonic": false,
+      "start_time": "2020-11-22 20:45:17.503530",
+      "end_time": "2020-11-23 02:37:25.777984",
+      "duration_sec": 21128.274454,
+      "queries_per_sec": 1.69
+    },
+    {
+      "pair_id": "data/raw/cic_bell_dns_exf_2021/Attack_Heavy_Benign/Attacks/heavy_exe.pcap.csv",
+      "category": "Attack",
+      "intensity": "heavy",
+      "modality": "exe",
+      "stateless_rows": 34629,
+      "stateful_rows": 9980,
+      "row_match": false,
+      "row_diff": 24649,
+      "stateless_file": "stateless_features-heavy_exe.pcap.csv",
+      "stateful_file": "stateful_features-heavy_exe.pcap.csv",
+      "ts_monotonic": false,
+      "start_time": "2020-11-24 23:18:25.442015",
+      "end_time": "2020-11-25 04:58:50.745807",
+      "duration_sec": 20425.303792,
+      "queries_per_sec": 1.7
+    },
+    {
+      "pair_id": "data/raw/cic_bell_dns_exf_2021/Attack_Heavy_Benign/Attacks/heavy_image.pcap.csv",
+      "category": "Attack",
+      "intensity": "heavy",
+      "modality": "image",
+      "stateless_rows": 36386,
+      "stateful_rows": 11076,
+      "row_match": false,
+      "row_diff": 25310,
+      "stateless_file": "stateless_features-heavy_image.pcap.csv",
+      "stateful_file": "stateful_features-heavy_image.pcap.csv",
+      "ts_monotonic": true,
+      "start_time": "2020-11-23 18:26:25.912239",
+      "end_time": "2020-11-24 00:23:55.035306",
+      "duration_sec": 21449.123067,
+      "queries_per_sec": 1.7
+    },
+    {
+      "pair_id": "data/raw/cic_bell_dns_exf_2021/Attack_Heavy_Benign/Attacks/heavy_text.pcap.csv",
+      "category": "Attack",
+      "intensity": "heavy",
+      "modality": "text",
+      "stateless_rows": 71102,
+      "stateful_rows": 18916,
+      "row_match": false,
+      "row_diff": 52186,
+      "stateless_file": "stateless_features-heavy_text.pcap.csv",
+      "stateful_file": "stateful_features-heavy_text.pcap.csv",
+      "ts_monotonic": true,
+      "start_time": "2020-11-24 00:28:00.575730",
+      "end_time": "2020-11-24 12:05:39.806971",
+      "duration_sec": 41859.231241,
+      "queries_per_sec": 1.7
+    },
+    {
+      "pair_id": "data/raw/cic_bell_dns_exf_2021/Attack_Heavy_Benign/Attacks/heavy_video.pcap.csv",
+      "category": "Attack",
+      "intensity": "heavy",
+      "modality": "video",
+      "stateless_rows": 38012,
+      "stateful_rows": 10897,
+      "row_match": false,
+      "row_diff": 27115,
+      "stateless_file": "stateless_features-heavy_video.pcap.csv",
+      "stateful_file": "stateful_features-heavy_video.pcap.csv",
+      "ts_monotonic": true,
+      "start_time": "2020-11-24 17:00:44.878565",
+      "end_time": "2020-11-24 23:16:26.353886",
+      "duration_sec": 22541.475321,
+      "queries_per_sec": 1.69
+    },
+    {
+      "pair_id": "data/raw/cic_bell_dns_exf_2021/Attack_Heavy_Benign/Benign/benign_heavy_1.pcap.csv",
+      "category": "Benign",
+      "intensity": "heavy",
+      "modality": "benign",
+      "stateless_rows": 61567,
+      "stateful_rows": 22774,
+      "row_match": false,
+      "row_diff": 38793,
+      "stateless_file": "stateless_features-benign_heavy_1.pcap.csv",
+      "stateful_file": "stateful_features-benign_heavy_1.pcap.csv",
+      "ts_monotonic": true,
+      "start_time": "2020-11-22 10:52:54.331014",
+      "end_time": "2020-11-22 14:43:21.379766",
+      "duration_sec": 13827.048752,
+      "queries_per_sec": 4.45
+    },
+    {
+      "pair_id": "data/raw/cic_bell_dns_exf_2021/Attack_Heavy_Benign/Benign/benign_heavy_2.pcap.csv",
+      "category": "Benign",
+      "intensity": "heavy",
+      "modality": "benign",
+      "stateless_rows": 49115,
+      "stateful_rows": 19660,
+      "row_match": false,
+      "row_diff": 29455,
+      "stateless_file": "stateless_features-benign_heavy_2.pcap.csv",
+      "stateful_file": "stateful_features-benign_heavy_2.pcap.csv",
+      "ts_monotonic": true,
+      "start_time": "2020-11-23 15:06:33.824493",
+      "end_time": "2020-11-23 18:21:35.199219",
+      "duration_sec": 11701.374726,
+      "queries_per_sec": 4.2
+    },
+    {
+      "pair_id": "data/raw/cic_bell_dns_exf_2021/Attack_Heavy_Benign/Benign/benign_heavy_3.pcap.csv",
+      "category": "Benign",
+      "intensity": "heavy",
+      "modality": "benign",
+      "stateless_rows": 71012,
+      "stateful_rows": 26582,
+      "row_match": false,
+      "row_diff": 44430,
+      "stateless_file": "stateless_features-benign_heavy_3.pcap.csv",
+      "stateful_file": "stateful_features-benign_heavy_3.pcap.csv",
+      "ts_monotonic": true,
+      "start_time": "2020-11-24 12:07:10.981991",
+      "end_time": "2020-11-24 16:53:20.489270",
+      "duration_sec": 17169.507279,
+      "queries_per_sec": 4.14
+    },
+    {
+      "pair_id": "data/raw/cic_bell_dns_exf_2021/Attack_Light_Benign/Attacks/light_audio.pcap.csv",
+      "category": "Attack",
+      "intensity": "light",
+      "modality": "audio",
+      "stateless_rows": 17618,
+      "stateful_rows": 4246,
+      "row_match": false,
+      "row_diff": 13372,
+      "stateless_file": "stateless_features-light_audio.pcap.csv",
+      "stateful_file": "stateful_features-light_audio.pcap.csv",
+      "ts_monotonic": true,
+      "start_time": "2020-11-21 19:13:27.034607",
+      "end_time": "2020-11-21 22:06:53.068591",
+      "duration_sec": 10406.033984,
+      "queries_per_sec": 1.69
+    },
+    {
+      "pair_id": "data/raw/cic_bell_dns_exf_2021/Attack_Light_Benign/Attacks/light_compressed.pcap.csv",
+      "category": "Attack",
+      "intensity": "light",
+      "modality": "compressed",
+      "stateless_rows": 10241,
+      "stateful_rows": 2904,
+      "row_match": false,
+      "row_diff": 7337,
+      "stateless_file": "stateless_features-light_compressed.pcap.csv",
+      "stateful_file": "stateful_features-light_compressed.pcap.csv",
+      "ts_monotonic": true,
+      "start_time": "2020-11-21 22:09:06.308662",
+      "end_time": "2020-11-21 23:49:54.893073",
+      "duration_sec": 6048.584411,
+      "queries_per_sec": 1.69
+    },
+    {
+      "pair_id": "data/raw/cic_bell_dns_exf_2021/Attack_Light_Benign/Attacks/light_exe.pcap.csv",
+      "category": "Attack",
+      "intensity": "light",
+      "modality": "exe",
+      "stateless_rows": 6450,
+      "stateful_rows": 1836,
+      "row_match": false,
+      "row_diff": 4614,
+      "stateless_file": "stateless_features-light_exe.pcap.csv",
+      "stateful_file": "stateful_features-light_exe.pcap.csv",
+      "ts_monotonic": true,
+      "start_time": "2020-11-21 23:51:53.869238",
+      "end_time": "2020-11-22 00:55:04.984251",
+      "duration_sec": 3791.115013,
+      "queries_per_sec": 1.7
+    },
+    {
+      "pair_id": "data/raw/cic_bell_dns_exf_2021/Attack_Light_Benign/Attacks/light_image.pcap.csv",
+      "category": "Attack",
+      "intensity": "light",
+      "modality": "image",
+      "stateless_rows": 524,
+      "stateful_rows": 143,
+      "row_match": false,
+      "row_diff": 381,
+      "stateless_file": "stateless_features-light_image.pcap.csv",
+      "stateful_file": "stateful_features-light_image.pcap.csv",
+      "ts_monotonic": true,
+      "start_time": "2020-11-22 01:46:18.018254",
+      "end_time": "2020-11-22 01:51:27.493885",
+      "duration_sec": 309.475631,
+      "queries_per_sec": 1.69
+    },
+    {
+      "pair_id": "data/raw/cic_bell_dns_exf_2021/Attack_Light_Benign/Attacks/light_text.pcap.csv",
+      "category": "Attack",
+      "intensity": "light",
+      "modality": "text",
+      "stateless_rows": 3479,
+      "stateful_rows": 921,
+      "row_match": false,
+      "row_diff": 2558,
+      "stateless_file": "stateless_features-light_text.pcap.csv",
+      "stateful_file": "stateful_features-light_text.pcap.csv",
+      "ts_monotonic": true,
+      "start_time": "2020-11-22 02:21:39.564157",
+      "end_time": "2020-11-22 02:55:53.162062",
+      "duration_sec": 2053.597905,
+      "queries_per_sec": 1.69
+    },
+    {
+      "pair_id": "data/raw/cic_bell_dns_exf_2021/Attack_Light_Benign/Attacks/light_video.pcap.csv",
+      "category": "Attack",
+      "intensity": "light",
+      "modality": "video",
+      "stateless_rows": 4371,
+      "stateful_rows": 1245,
+      "row_match": false,
+      "row_diff": 3126,
+      "stateless_file": "stateless_features-light_video.pcap.csv",
+      "stateful_file": "stateful_features-light_video.pcap.csv",
+      "ts_monotonic": true,
+      "start_time": "2020-11-22 02:56:01.040597",
+      "end_time": "2020-11-22 03:38:33.985499",
+      "duration_sec": 2552.944902,
+      "queries_per_sec": 1.71
+    },
+    {
+      "pair_id": "data/raw/cic_bell_dns_exf_2021/Benign/benign_1.pcap.csv",
+      "category": "Benign",
+      "intensity": "standard_benign",
+      "modality": "benign",
+      "stateless_rows": 132499,
+      "stateful_rows": 52438,
+      "row_match": false,
+      "row_diff": 80061,
+      "stateless_file": "stateless_features-benign_1.pcap.csv",
+      "stateful_file": "stateful_features-benign_1.pcap.csv",
+      "ts_monotonic": false,
+      "start_time": "2020-11-20 13:58:38.988039",
+      "end_time": "2020-11-20 23:21:53.911649",
+      "duration_sec": 33794.92361,
+      "queries_per_sec": 3.92
+    },
+    {
+      "pair_id": "data/raw/cic_bell_dns_exf_2021/Benign/benign_2.pcap.csv",
+      "category": "Benign",
+      "intensity": "standard_benign",
+      "modality": "benign",
+      "stateless_rows": 88574,
+      "stateful_rows": 34560,
+      "row_match": false,
+      "row_diff": 54014,
+      "stateless_file": "stateless_features-benign_2.pcap.csv",
+      "stateful_file": "stateful_features-benign_2.pcap.csv",
+      "ts_monotonic": false,
+      "start_time": "2020-11-20 23:25:08.168242",
+      "end_time": "2020-11-21 04:57:38.977982",
+      "duration_sec": 19950.80974,
+      "queries_per_sec": 4.44
+    }
+  ],
+  "label_summary": {
+    "total_records": 697120,
+    "binary_counts": {
+      "0": 402767,
+      "1": 294353
+    },
+    "binary_proportions": {
+      "0": 57.78,
+      "1": 42.22
+    },
+    "intensity_counts": {
+      "heavy": 433364,
+      "standard_benign": 221073,
+      "light": 42683
+    },
+    "modality_counts": {
+      "benign": 402767,
+      "text": 74581,
+      "audio": 53413,
+      "compressed": 45987,
+      "video": 42383,
+      "exe": 41079,
+      "image": 36910
+    },
+    "attack_vs_benign_by_intensity": {
+      "0": {
+        "heavy": 181694,
+        "light": 0,
+        "standard_benign": 221073
+      },
+      "1": {
+        "heavy": 251670,
+        "light": 42683,
+        "standard_benign": 0
+      }
+    },
+    "modality_by_intensity": {
+      "audio": {
+        "heavy": 35795,
+        "light": 17618,
+        "standard_benign": 0
+      },
+      "benign": {
+        "heavy": 181694,
+        "light": 0,
+        "standard_benign": 221073
+      },
+      "compressed": {
+        "heavy": 35746,
+        "light": 10241,
+        "standard_benign": 0
+      },
+      "exe": {
+        "heavy": 34629,
+        "light": 6450,
+        "standard_benign": 0
+      },
+      "image": {
+        "heavy": 36386,
+        "light": 524,
+        "standard_benign": 0
+      },
+      "text": {
+        "heavy": 71102,
+        "light": 3479,
+        "standard_benign": 0
+      },
+      "video": {
+        "heavy": 38012,
+        "light": 4371,
+        "standard_benign": 0
+      }
+    }
+  },
+  "duplicate_analysis": {
+    "exact_stateless_duplicates": 594789,
+    "exact_stateless_row_duplicates_with_ts": 518,
+    "cross_class_duplicates": 79,
+    "total_stateless_rows": 697120,
+    "duplicate_percentage": 85.32
+  },
+  "low_slow_stats": [
+    {
+      "intensity": "light",
+      "row_count": 42683,
+      "mean_inter_arrival_sec": 0.5895028898156175,
+      "median_inter_arrival_sec": 0.410844,
+      "std_inter_arrival_sec": 0.5086231944026552,
+      "p95_inter_arrival_sec": 1.2366605,
+      "mean_fqdn_length": 25.3827050582199,
+      "mean_entropy": 2.444203681547027,
+      "mean_subdomain_length": 8.101047255347563,
+      "mean_numeric": 8.965489773446103
+    },
+    {
+      "intensity": "heavy",
+      "row_count": 433364,
+      "mean_inter_arrival_sec": 0.44110779240546055,
+      "median_inter_arrival_sec": 0.410325,
+      "std_inter_arrival_sec": 0.46467872027839074,
+      "p95_inter_arrival_sec": 1.235779,
+      "mean_fqdn_length": 22.564495435707627,
+      "mean_entropy": 2.4817821134444755,
+      "mean_subdomain_length": 6.245202647197275,
+      "mean_numeric": 6.711302738575424
+    },
+    {
+      "intensity": "standard_benign",
+      "row_count": 221073,
+      "mean_inter_arrival_sec": 0.2431130592609681,
+      "median_inter_arrival_sec": 0.150229,
+      "std_inter_arrival_sec": 0.28048778336284463,
+      "p95_inter_arrival_sec": 0.7382189999999998,
+      "mean_fqdn_length": 18.45385460911102,
+      "mean_entropy": 2.473145933415266,
+      "mean_subdomain_length": 3.86005075246638,
+      "mean_numeric": 3.783162122918674
+    }
+  ],
+  "dns_threats_summary": {
+    "train_rows": 2482810,
+    "test_rows": 620703,
+    "train_columns": [
+      "domain",
+      "class"
+    ],
+    "test_columns": [
+      "domain",
+      "class"
+    ],
+    "train_classes": {
+      "1": 1532263,
+      "0": 944106,
+      "2": 6441
+    },
+    "test_classes": {
+      "1": 383072,
+      "0": 236072,
+      "2": 1559
+    },
+    "unique_train_domains": 2364906,
+    "unique_test_domains": 620696,
+    "train_test_domain_overlap": 0,
+    "train_test_leakage_pct": 0.0,
+    "domain_length_stats_train": {
+      "min": 1,
+      "mean": 14.23,
+      "median": 13.0,
+      "max": 65
+    },
+    "domain_length_stats_test": {
+      "min": 4,
+      "mean": 18.33,
+      "median": 17.0,
+      "max": 253
+    }
+  },
+  "stateless_type_anomalies": {
+    "FQDN_count": "int64",
+    "subdomain_length": "int64",
+    "upper": "int64",
+    "lower": "int64",
+    "numeric": "int64",
+    "entropy": "float64",
+    "special": "int64",
+    "labels": "int64",
+    "labels_max": "int64",
+    "labels_average": "float64",
+    "longest_word": "object",
+    "sld": "object",
+    "len": "int64",
+    "subdomain": "int64"
+  },
+  "stateful_type_anomalies": {
+    "rr": {
+      "dtype": "float64",
+      "sample": "0.0",
+      "contains_python_structures": false,
+      "unique_values_count": 11
+    },
+    "A_frequency": {
+      "dtype": "int64",
+      "sample": "0",
+      "contains_python_structures": false,
+      "unique_values_count": 10
+    },
+    "NS_frequency": {
+      "dtype": "int64",
+      "sample": "0",
+      "contains_python_structures": false,
+      "unique_values_count": 1
+    },
+    "CNAME_frequency": {
+      "dtype": "int64",
+      "sample": "0",
+      "contains_python_structures": false,
+      "unique_values_count": 1
+    },
+    "SOA_frequency": {
+      "dtype": "int64",
+      "sample": "0",
+      "contains_python_structures": false,
+      "unique_values_count": 1
+    },
+    "NULL_frequency": {
+      "dtype": "int64",
+      "sample": "0",
+      "contains_python_structures": false,
+      "unique_values_count": 1
+    },
+    "PTR_frequency": {
+      "dtype": "int64",
+      "sample": "2",
+      "contains_python_structures": false,
+      "unique_values_count": 19
+    },
+    "HINFO_frequency": {
+      "dtype": "int64",
+      "sample": "0",
+      "contains_python_structures": false,
+      "unique_values_count": 1
+    },
+    "MX_frequency": {
+      "dtype": "int64",
+      "sample": "0",
+      "contains_python_structures": false,
+      "unique_values_count": 1
+    },
+    "TXT_frequency": {
+      "dtype": "int64",
+      "sample": "0",
+      "contains_python_structures": false,
+      "unique_values_count": 2
+    },
+    "AAAA_frequency": {
+      "dtype": "int64",
+      "sample": "0",
+      "contains_python_structures": false,
+      "unique_values_count": 2
+    },
+    "SRV_frequency": {
+      "dtype": "int64",
+      "sample": "0",
+      "contains_python_structures": false,
+      "unique_values_count": 1
+    },
+    "OPT_frequency": {
+      "dtype": "int64",
+      "sample": "0",
+      "contains_python_structures": false,
+      "unique_values_count": 1
+    },
+    "rr_type": {
+      "dtype": "object",
+      "sample": "{'PTR'}",
+      "contains_python_structures": true,
+      "unique_values_count": 6
+    },
+    "rr_count": {
+      "dtype": "int64",
+      "sample": "0",
+      "contains_python_structures": false,
+      "unique_values_count": 7
+    },
+    "rr_name_entropy": {
+      "dtype": "float64",
+      "sample": "3.146083993626608",
+      "contains_python_structures": false,
+      "unique_values_count": 105385
+    },
+    "rr_name_length": {
+      "dtype": "int64",
+      "sample": "25",
+      "contains_python_structures": false,
+      "unique_values_count": 35
+    },
+    "distinct_ns": {
+      "dtype": "int64",
+      "sample": "0",
+      "contains_python_structures": false,
+      "unique_values_count": 4
+    },
+    "distinct_ip": {
+      "dtype": "object",
+      "sample": "set()",
+      "contains_python_structures": true,
+      "unique_values_count": 1
+    },
+    "unique_country": {
+      "dtype": "object",
+      "sample": "set()",
+      "contains_python_structures": true,
+      "unique_values_count": 162
+    },
+    "unique_asn": {
+      "dtype": "object",
+      "sample": "set()",
+      "contains_python_structures": true,
+      "unique_values_count": 5635
+    },
+    "distinct_domains": {
+      "dtype": "object",
+      "sample": "{}",
+      "contains_python_structures": true,
+      "unique_values_count": 55972
+    },
+    "reverse_dns": {
+      "dtype": "object",
+      "sample": "unknown",
+      "contains_python_structures": false,
+      "unique_values_count": 23264
+    },
+    "a_records": {
+      "dtype": "int64",
+      "sample": "0",
+      "contains_python_structures": false,
+      "unique_values_count": 1
+    },
+    "unique_ttl": {
+      "dtype": "object",
+      "sample": "[1, 1]",
+      "contains_python_structures": true,
+      "unique_values_count": 79
+    },
+    "ttl_mean": {
+      "dtype": "float64",
+      "sample": "1.0",
+      "contains_python_structures": false,
+      "unique_values_count": 18
+    },
+    "ttl_variance": {
+      "dtype": "float64",
+      "sample": "0.0",
+      "contains_python_structures": false,
+      "unique_values_count": 11
+    }
+  }
+}

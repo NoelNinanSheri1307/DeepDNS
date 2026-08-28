@@ -1,0 +1,19 @@
+filename,capture_id,is_valid,total_rows,missing_columns_count,unexpected_columns_count,timestamp_parseable,is_chronological,non_numeric_count,total_nulls,anomalies_count,anomalies
+stateless_features-heavy_audio.pcap.csv,heavy_audio,True,35795,0,0,True,False,0,0,1,Timestamps in 'stateless_features-heavy_audio.pcap.csv' are not strictly sorted.
+stateless_features-heavy_compressed.pcap.csv,heavy_compressed,True,35746,0,0,True,False,0,0,1,Timestamps in 'stateless_features-heavy_compressed.pcap.csv' are not strictly sorted.
+stateless_features-heavy_exe.pcap.csv,heavy_exe,True,34629,0,0,True,False,0,0,1,Timestamps in 'stateless_features-heavy_exe.pcap.csv' are not strictly sorted.
+stateless_features-heavy_image.pcap.csv,heavy_image,True,36386,0,0,True,True,0,0,0,None
+stateless_features-heavy_text.pcap.csv,heavy_text,True,71102,0,0,True,True,0,0,0,None
+stateless_features-heavy_video.pcap.csv,heavy_video,True,38012,0,0,True,True,0,0,0,None
+stateless_features-benign_heavy_1.pcap.csv,benign_heavy_1,True,61567,0,0,True,True,0,4,0,None
+stateless_features-benign_heavy_2.pcap.csv,benign_heavy_2,True,49115,0,0,True,True,0,4,0,None
+stateless_features-benign_heavy_3.pcap.csv,benign_heavy_3,True,71012,0,0,True,True,0,2,0,None
+stateless_features-light_audio.pcap.csv,light_audio,True,17618,0,0,True,True,0,0,0,None
+stateless_features-light_compressed.pcap.csv,light_compressed,True,10241,0,0,True,True,0,0,0,None
+stateless_features-light_exe.pcap.csv,light_exe,True,6450,0,0,True,True,0,0,0,None
+stateless_features-light_image.pcap.csv,light_image,True,524,0,0,True,True,0,0,0,None
+stateless_features-light_text.pcap.csv,light_text,True,3479,0,0,True,True,0,0,0,None
+stateless_features-light_video.pcap.csv,light_video,True,4371,0,0,True,True,0,0,0,None
+stateless_features-light_benign.pcap.csv,light_benign,True,60091,0,0,True,True,0,4,0,None
+stateless_features-benign_1.pcap.csv,benign_1,True,132499,0,0,True,False,0,9,1,Timestamps in 'stateless_features-benign_1.pcap.csv' are not strictly sorted.
+stateless_features-benign_2.pcap.csv,benign_2,True,88574,0,0,True,False,0,8,1,Timestamps in 'stateless_features-benign_2.pcap.csv' are not strictly sorted.

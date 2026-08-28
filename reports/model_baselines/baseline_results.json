@@ -1,0 +1,142 @@
+{
+  "rule_based": {
+    "val": {
+      "model_name": "Rule_Based",
+      "dataset_split": "val",
+      "total_samples": 103119,
+      "accuracy": 0.666628,
+      "precision": 0.612058,
+      "recall": 0.992538,
+      "specificity": 0.308276,
+      "f1": 0.757189,
+      "fpr": 0.691724,
+      "fnr": 0.007462,
+      "roc_auc": 0.791317,
+      "pr_auc": 0.727481,
+      "confusion_matrix": {
+        "tp": 53601,
+        "fp": 33974,
+        "tn": 15141,
+        "fn": 403
+      }
+    },
+    "test": {
+      "model_name": "Rule_Based",
+      "dataset_split": "test",
+      "total_samples": 130065,
+      "accuracy": 0.533533,
+      "precision": 0.405603,
+      "recall": 0.993131,
+      "specificity": 0.318242,
+      "f1": 0.575973,
+      "fpr": 0.681758,
+      "fnr": 0.006869,
+      "roc_auc": 0.802997,
+      "pr_auc": 0.547044,
+      "confusion_matrix": {
+        "tp": 41206,
+        "fp": 60386,
+        "tn": 28188,
+        "fn": 285
+      }
+    }
+  },
+  "random_forest": {
+    "val": {
+      "model_name": "Random_Forest",
+      "dataset_split": "val",
+      "total_samples": 103119,
+      "accuracy": 0.888808,
+      "precision": 0.850869,
+      "recall": 0.955077,
+      "specificity": 0.815942,
+      "f1": 0.899967,
+      "fpr": 0.184058,
+      "fnr": 0.044923,
+      "roc_auc": 0.914413,
+      "pr_auc": 0.882243,
+      "confusion_matrix": {
+        "tp": 51578,
+        "fp": 9040,
+        "tn": 40075,
+        "fn": 2426
+      }
+    },
+    "test": {
+      "model_name": "Random_Forest",
+      "dataset_split": "test",
+      "total_samples": 130065,
+      "accuracy": 0.875324,
+      "precision": 0.733169,
+      "recall": 0.957726,
+      "specificity": 0.836724,
+      "f1": 0.830536,
+      "fpr": 0.163276,
+      "fnr": 0.042274,
+      "roc_auc": 0.925924,
+      "pr_auc": 0.789126,
+      "confusion_matrix": {
+        "tp": 39737,
+        "fp": 14462,
+        "tn": 74112,
+        "fn": 1754
+      }
+    },
+    "feature_importances": {
+      "inter_arrival_time": 0.449817,
+      "fqdn_length": 0.182987,
+      "subdomain_length": 0.103911,
+      "char_entropy": 0.006833,
+      "digit_ratio": 0.043811,
+      "uppercase_ratio": 0.019289,
+      "special_ratio": 0.055702,
+      "label_count": 0.085292,
+      "max_label_length": 0.011245,
+      "avg_label_length": 0.024713,
+      "has_subdomain": 0.004485,
+      "payload_len": 0.011917
+    }
+  },
+  "mlp_baseline": {
+    "val": {
+      "model_name": "MLP_Baseline",
+      "dataset_split": "val",
+      "total_samples": 103119,
+      "accuracy": 0.885676,
+      "precision": 0.848855,
+      "recall": 0.951041,
+      "specificity": 0.813804,
+      "f1": 0.897047,
+      "fpr": 0.186196,
+      "fnr": 0.048959,
+      "roc_auc": 0.913217,
+      "pr_auc": 0.882777,
+      "confusion_matrix": {
+        "tp": 51360,
+        "fp": 9145,
+        "tn": 39970,
+        "fn": 2644
+      }
+    },
+    "test": {
+      "model_name": "MLP_Baseline",
+      "dataset_split": "test",
+      "total_samples": 130065,
+      "accuracy": 0.870888,
+      "precision": 0.727405,
+      "recall": 0.952038,
+      "specificity": 0.832874,
+      "f1": 0.824699,
+      "fpr": 0.167126,
+      "fnr": 0.047962,
+      "roc_auc": 0.923869,
+      "pr_auc": 0.790871,
+      "confusion_matrix": {
+        "tp": 39501,
+        "fp": 14803,
+        "tn": 73771,
+        "fn": 1990
+      }
+    }
+  }
+}

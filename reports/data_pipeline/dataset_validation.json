@@ -1,0 +1,37 @@
+{
+  "status": "SUCCESS",
+  "total_files_discovered": 38,
+  "cic_bell_stateless_captures": 18,
+  "total_stateless_rows": 757211,
+  "causal_features_extracted": [
+    "inter_arrival_time",
+    "fqdn_length",
+    "subdomain_length",
+    "char_entropy",
+    "digit_ratio",
+    "uppercase_ratio",
+    "special_ratio",
+    "label_count",
+    "max_label_length",
+    "avg_label_length",
+    "has_subdomain",
+    "payload_len"
+  ],
+  "forbidden_columns_excluded": [
+    "timestamp",
+    "sld",
+    "longest_word",
+    "src_file",
+    "pair_id",
+    "capture_id",
+    "label",
+    "label_name",
+    "label_modality",
+    "intensity"
+  ],
+  "scaler_fitted_on_rows": 524027,
+  "train_windows_count": 52714,
+  "val_windows_count": 10390,
+  "test_windows_count": 13084,
+  "dns_threats_vocab_size": 45
+}

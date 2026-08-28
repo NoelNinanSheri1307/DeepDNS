@@ -1,0 +1,124 @@
+# =============================================================================
+# DeepDNS .gitignore
+# Excludes large datasets, model weights, cache files, and system artifacts
+# to respect GitHub file size limits (100MB hard limit / 50MB warning)
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# 1. Large Datasets & Raw Traffic Captures
+# -----------------------------------------------------------------------------
+data/raw/
+data/interim/
+data/processed/*.joblib
+data/processed/*.pt
+data/processed/*.pth
+data/processed/models/
+*.pcap
+*.pcapng
+*.csv.gz
+*.tar.gz
+*.zip
+*.7z
+*.rar
+
+# -----------------------------------------------------------------------------
+# 2. Large Model Weights, Checkpoints & Transformers Cache
+# -----------------------------------------------------------------------------
+*.pt
+*.pth
+*.bin
+*.joblib
+*.pkl
+*.pickle
+*.h5
+*.hdf5
+*.safetensors
+*.onnx
+*.ckpt
+*.tflite
+checkpoints/
+saved_models/
+weights/
+hf_cache/
+transformers_cache/
+.cache/
+
+# -----------------------------------------------------------------------------
+# 3. Python Artifacts & Bytecode
+# -----------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# -----------------------------------------------------------------------------
+# 4. Virtual Environments & Packages
+# -----------------------------------------------------------------------------
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# -----------------------------------------------------------------------------
+# 5. Unit Tests, Coverage & Code Quality
+# -----------------------------------------------------------------------------
+.pytest_cache/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.mypy_cache/
+.ruff_cache/
+
+# -----------------------------------------------------------------------------
+# 6. Logging, Monitoring & Experiment Trackers
+# -----------------------------------------------------------------------------
+*.log
+logs/
+wandb/
+runs/
+tensorboard/
+mlruns/
+lightning_logs/
+
+# -----------------------------------------------------------------------------
+# 7. IDE, Editor & OS Artifacts
+# -----------------------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# -----------------------------------------------------------------------------
+# 8. Local AI Agent & IDE Temp Directories
+# -----------------------------------------------------------------------------
+.gemini/
+.agents/
+scratch/
