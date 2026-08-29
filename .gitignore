@@ -124,8 +124,21 @@ Thumbs.db
 desktop.ini
 
 # -----------------------------------------------------------------------------
-# 8. Local AI Agent & IDE Temp Directories
+# 8. Frontend & Web Application Artifacts
+# -----------------------------------------------------------------------------
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/.env.local
+frontend/.env.*.local
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# -----------------------------------------------------------------------------
+# 9. Local AI Agent & IDE Temp Directories
 # -----------------------------------------------------------------------------
 .gemini/
 .agents/
 scratch/
+
