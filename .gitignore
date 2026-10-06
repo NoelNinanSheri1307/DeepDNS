@@ -112,7 +112,14 @@ mlruns/
 lightning_logs/
 
 # -----------------------------------------------------------------------------
-# 7. IDE, Editor & OS Artifacts
+# 7. Environment & Secret Variables
+# -----------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+
+# -----------------------------------------------------------------------------
+# 8. IDE, Editor & OS Artifacts
 # -----------------------------------------------------------------------------
 .vscode/
 .idea/
@@ -122,9 +129,11 @@ lightning_logs/
 .DS_Store
 Thumbs.db
 desktop.ini
+$RECYCLE.BIN/
+System Volume Information/
 
 # -----------------------------------------------------------------------------
-# 8. Frontend & Web Application Artifacts
+# 9. Frontend & Web Application Artifacts
 # -----------------------------------------------------------------------------
 frontend/node_modules/
 frontend/dist/
@@ -134,11 +143,26 @@ frontend/.env.*.local
 frontend/npm-debug.log*
 frontend/yarn-debug.log*
 frontend/yarn-error.log*
+frontend/.pnpm-debug.log*
 
 # -----------------------------------------------------------------------------
-# 9. Local AI Agent & IDE Temp Directories
+# 10. Audio / Media / Recordings / Temp Artifacts
+# -----------------------------------------------------------------------------
+.tempmediaStorage/
+.user_uploaded/
+scratch/
+*.tmp
+*.bak
+*.m4a
+*.wav
+*.mp3
+*.ogg
+*.mp4
+*.avi
+*.mov
+
+# -----------------------------------------------------------------------------
+# 11. Local AI Agent & IDE Temp Directories
 # -----------------------------------------------------------------------------
 .gemini/
 .agents/
-scratch/
-
