@@ -36,10 +36,10 @@ export const WorkflowGuide: React.FC = () => {
         <div className="workflow-card">
           <div className="workflow-number">STEP 3: RUN DETECTION</div>
           <div style={{ fontSize: '13px', color: 'var(--text-primary)', fontWeight: 600 }}>
-            Start Stream or Batch
+            Start Real-Time Stream
           </div>
           <p style={{ fontSize: '12px', color: 'var(--text-secondary)', margin: 0 }}>
-            Click <strong>Start WebSocket Stream</strong> to observe queries arriving live in real-time, <strong>Step Query</strong> for manual inspection, or <strong>Instant Batch Detect</strong>.
+            Click <strong>Start WebSocket Stream</strong> to observe queries arriving live in real-time, or <strong>Step Query</strong> for manual inspection.
           </p>
         </div>
 

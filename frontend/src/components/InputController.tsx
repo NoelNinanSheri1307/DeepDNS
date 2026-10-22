@@ -1,12 +1,11 @@
 import React, { useRef } from 'react';
 import { DNSObservation, StreamState } from '../types';
-import { Play, RotateCcw, Upload, Activity, HelpCircle } from 'lucide-react';
+import { Play, RotateCcw, Upload, HelpCircle } from 'lucide-react';
 import { SAMPLE_ATTACK_STREAM, SAMPLE_BENIGN_STREAM, SAMPLE_OOD_ATTACK_STREAM } from '../data/sampleStreams';
 
 interface InputControllerProps {
   onLoadStream: (stream: DNSObservation[], name: string) => void;
   onStartStreaming: () => void;
-  onBatchDetect: () => void;
   onReset: () => void;
   onOpenSchemaModal: () => void;
   streamState: StreamState;
@@ -17,7 +16,6 @@ interface InputControllerProps {
 export const InputController: React.FC<InputControllerProps> = ({
   onLoadStream,
   onStartStreaming,
-  onBatchDetect,
   onReset,
   onOpenSchemaModal,
   streamState,
@@ -132,23 +130,6 @@ export const InputController: React.FC<InputControllerProps> = ({
           </div>
         </div>
 
-        {/* Instant Batch Detect Button with Tooltip */}
-        <div className="tooltip-wrapper">
-          <button
-            onClick={onBatchDetect}
-            disabled={!hasObservations || isStreaming}
-            className="btn-precision"
-          >
-            <Activity size={14} />
-            <span>INSTANT BATCH DETECT (/detect)</span>
-          </button>
-          <div className="tooltip-box tooltip-wide">
-            <strong style={{ color: 'var(--accent-blue)', display: 'block', marginBottom: '3px' }}>
-              Instant Batch Evaluation Pipeline (POST /detect)
-            </strong>
-            Sends the loaded observation sequence (5 to 30 queries) in a single HTTP POST request. The PyTorch Dual-View model runs forward passes sequentially across horizons K &isin; [5, 10, 15, 20, 25, 30]. If confidence crosses &tau;<sub>attack</sub> or &tau;<sub>benign</sub>, it returns an immediate early stopping result. If the stream is unknown/ambiguous and evidence remains uncertain through K=30, the AEC executes a bounded fallback decision at K=30 (P &ge; 0.5 &rarr; ATTACK, P &lt; 0.5 &rarr; BENIGN with reason FORCED_HORIZON_REACHED), guaranteeing the resolver never hangs indefinitely.
-          </div>
-        </div>
 
         {/* Upload Button */}
         <button

@@ -35,7 +35,7 @@ export const DecisionPanel: React.FC<DecisionPanelProps> = ({
                 Awaiting Sequential Stream Execution
               </div>
               <div style={{ fontSize: '12px', color: 'var(--text-dim)' }}>
-                Start a WebSocket stream or click Instant Batch Detect to evaluate evidence
+                Start a WebSocket stream to evaluate evidence in real-time
               </div>
             </div>
           )}

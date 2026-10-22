@@ -84,28 +84,6 @@ export const App: React.FC = () => {
     setActiveDatasetName(name);
   };
 
-  // Instant Batch Detection (POST /detect)
-  const handleBatchDetect = async () => {
-    if (observations.length < 5) {
-      setErrorMessage('DeepDNS requires at least 5 observations for sequential evaluation.');
-      return;
-    }
-
-    setEvaluating(true);
-    setErrorMessage(null);
-    try {
-      const result = await detectBatch(observations, mode, `batch_${Date.now()}`);
-      setDetectionResult(result);
-      setEvidenceHistory(result.evidence_history);
-      setStreamCount(result.stopping_horizon);
-      setStreamState('DECISION_REACHED');
-    } catch (err: any) {
-      setErrorMessage(err.message || 'Batch detection failed.');
-      setStreamState('ERROR');
-    } finally {
-      setEvaluating(false);
-    }
-  };
 
   // Real-time Progressive WebSocket Streaming
   const handleStartStreaming = () => {
@@ -252,7 +230,6 @@ export const App: React.FC = () => {
           <InputController
             onLoadStream={handleLoadStream}
             onStartStreaming={handleStartStreaming}
-            onBatchDetect={handleBatchDetect}
             onReset={resetSession}
             onOpenSchemaModal={() => setIsSchemaModalOpen(true)}
             streamState={streamState}
